@@ -24,6 +24,7 @@ export default function Footer({ lang, d }) {
       <div className="footer-links">
         <div className="wrap footer-links-in">
           <Link href={`/${lang}/sites`}>{d.nav.sites}</Link>
+          <Link href={`/${lang}/visite-3d`}>{d.nav.tour3d}</Link>
           <Link href={`/${lang}/opportunites`}>{d.nav.opps}</Link>
           <Link href={`/${lang}/a-propos`}>{d.nav.about}</Link>
           <Link href={`/${lang}/contact`}>{d.nav.contact}</Link>

@@ -23,6 +23,7 @@ export default function Header({ lang, nav, partner }) {
     { href: `/${lang}`, label: nav.home, exact: true },
     { href: `/${lang}/a-propos`, label: nav.about },
     { href: `/${lang}/sites`, label: nav.sites },
+    { href: `/${lang}/visite-3d`, label: nav.tour3d },
     { href: `/${lang}/opportunites`, label: nav.opps },
     { href: `/${lang}/contact`, label: nav.contact },
   ];

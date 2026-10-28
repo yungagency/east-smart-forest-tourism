@@ -128,6 +128,18 @@ export default async function Home({ params }) {
         </div>
       </section>
 
+      {/* VISITE 3D */}
+      <section className="tour-band">
+        <div className="wrap tour-band-in">
+          <div>
+            <div className="eyebrow light">{d.tour3d.kicker}</div>
+            <h2>{d.tour3d.bandTitle}</h2>
+            <p>{d.tour3d.bandText}</p>
+          </div>
+          <Link className="btn btn-primary" href={`/${lang}/visite-3d`}><Icon name="drone" size={20} /> {d.tour3d.cta}</Link>
+        </div>
+      </section>
+
       {/* POURQUOI EAST */}
       <section className="section why">
         <div className="wrap why-grid">

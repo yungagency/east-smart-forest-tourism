@@ -89,7 +89,7 @@ p { margin: 0 0 1em; }
 .lang a.on { background: var(--g800); color: #fff; }
 .lang a::after { display: none; }
 .burger { display: none; background: none; border: 0; color: var(--g800); padding: 8px; cursor: pointer; }
-@media (max-width: 1020px) {
+@media (max-width: 1180px) {
   .burger { display: block; }
   .nav { display: none; position: absolute; top: var(--header-h); left: 0; right: 0; background: #fff; flex-direction: column; align-items: stretch; padding: 12px 24px 24px; box-shadow: var(--shadow); }
   .nav.open { display: flex; }
@@ -312,3 +312,40 @@ a.card:hover .card-img img { transform: scale(1.04); }
 .credits-list { list-style: none; padding: 0; display: grid; gap: 14px; }
 .credits-list li { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: center; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 10px; }
 .credits-list img { width: 96px; height: 64px; object-fit: cover; border-radius: 8px; }
+
+/* Visite 3D */
+.page-head.compact { padding: 44px 0 36px; }
+.tour-band { position: relative; color: #fff; padding: 56px 0; background: linear-gradient(110deg, #0a3420 0%, #146036 55%, #1d7a43 100%); overflow: hidden; }
+.tour-band::after { content: ''; position: absolute; right: -80px; top: -120px; width: 420px; height: 420px; border-radius: 50%; border: 60px solid rgba(124,193,66,.12); }
+.tour-band-in { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap; }
+.tour-band h2 { color: #fff; margin-bottom: 8px; }
+.tour-band p { margin: 0; color: rgba(255,255,255,.85); max-width: 620px; }
+.m3d { display: grid; grid-template-columns: 300px 1fr; gap: 16px; height: min(78vh, 760px); min-height: 520px; }
+.m3d-panel { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; gap: 14px; min-height: 0; }
+.m3d-actions { display: grid; gap: 8px; }
+.m3d-actions .btn { justify-content: center; padding: 11px 16px; }
+.m3d-controls { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: .82rem; font-weight: 600; }
+.m3d-controls label { display: grid; gap: 4px; flex: 1; }
+.m3d-controls input[type=range] { accent-color: var(--g600); width: 100%; }
+.m3d-list { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1; display: grid; gap: 4px; align-content: start; }
+.m3d-list button { width: 100%; display: flex; gap: 10px; align-items: center; text-align: left; background: none; border: 0; padding: 9px 10px; border-radius: 10px; cursor: pointer; font: inherit; font-size: .9rem; color: var(--ink); }
+.m3d-list button:hover, .m3d-list button.on { background: var(--mint); }
+.m3d-list button.on { font-weight: 600; }
+.m3d-list i { flex: none; width: 10px; height: 10px; border-radius: 50%; }
+.m3d-list small { display: block; color: var(--muted); font-size: .75rem; font-weight: 400; }
+.m3d-stage { position: relative; border-radius: var(--radius); overflow: hidden; background: #0a3420; min-height: 0; }
+.m3d-map { position: absolute; inset: 0; }
+.m3d-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; color: #fff; background: rgba(10,52,32,.7); font-weight: 600; }
+.m3d-card { position: absolute; left: 16px; bottom: 16px; max-width: 360px; background: rgba(255,255,255,.96); border-radius: 14px; padding: 16px 18px; box-shadow: var(--shadow); }
+.m3d-card b { display: block; font-family: var(--font-display), sans-serif; color: var(--g900); margin-bottom: 4px; }
+.m3d-card p { font-size: .88rem; color: var(--muted); margin-bottom: 10px; }
+.m3d-card .btn { padding: 9px 16px; font-size: .85rem; }
+.m3d-marker { background: none; border: 0; padding: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; }
+.m3d-marker span { width: 16px; height: 16px; border-radius: 50%; background: var(--c); border: 3px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,.45); }
+.m3d-marker b { margin-top: 4px; font: 600 11px/1.2 var(--font-body), sans-serif; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.9); white-space: nowrap; max-width: 160px; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 860px) {
+  .m3d { grid-template-columns: 1fr; height: auto; }
+  .m3d-stage { height: 62vh; min-height: 380px; order: -1; }
+  .m3d-list { max-height: 260px; }
+  .m3d-card { right: 16px; max-width: none; }
+}
