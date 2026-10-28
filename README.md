@@ -10,13 +10,15 @@ Porteur : Peing Ghislain Junior Walter · Co-portage : Atipik Group · Développ
 | Accueil (hero, destinations à la une, carte, phases, investir) | `/fr`, `/en` |
 | Destinations (filtres + carte + fiches) | `/fr/sites` |
 | Fiche destination | `/fr/sites/<slug>` |
-| Pistes d'investissement | `/fr/opportunites` |
+| Partenariats et pistes d'investissement | `/fr/opportunites` |
+| Visite 3D (satellite + relief) | `/fr/visite-3d` |
 | Le projet (vision, 5 piliers, porteurs) | `/fr/a-propos` |
 | Contact (formulaire + email / WhatsApp) | `/fr/contact` |
 | Crédits photos | `/fr/credits` |
+| Mentions légales et confidentialité | `/fr/mentions-legales` |
 | Administration | `/admin` |
 
-**Mode démo** : sans variables Supabase, le site affiche les 14 fiches et 3 pistes intégrées (`lib/seed.js`)
+**Mode démo** : sans variables Supabase, le site affiche les 14 fiches (dont 3 « à documenter ») et 3 pistes intégrées (`lib/seed.js`)
 et le formulaire de contact ouvre un email. L'admin s'active dès que Supabase est branché.
 
 Logo : reproduction vectorielle du logo du flyer (`components/Logo.js`, `public/icon.svg`).

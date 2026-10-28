@@ -40,7 +40,9 @@ export default async function SitePage({ params }) {
             <span className="badge" style={{ background: 'rgba(255,255,255,.12)', color: '#fff' }}>{d.sites.cats[s.category]}</span>
             {s.status === 'verifie'
               ? <span className="badge badge-ok">{d.sites.verified}</span>
-              : <span className="badge badge-warn">{d.sites.toVerify}</span>}
+              : s.limited
+                ? <span className="badge badge-limited">{d.sites.limited}</span>
+                : <span className="badge badge-warn">{d.sites.toVerify}</span>}
           </div>
           <h1>{t(s, 'name', lang)}</h1>
           <p className="lead">{t(s, 'summary', lang)}</p>
@@ -64,7 +66,7 @@ export default async function SitePage({ params }) {
             {t(s, 'description', lang).split('\n').filter(Boolean).map((p, i) => <p key={i} style={{ fontSize: '1.05rem' }}>{p}</p>)}
             {s.status !== 'verifie' && (
               <div className="note">
-                {d.sites.verifyNote}{' '}
+                {s.limited ? d.sites.limitedNote : d.sites.verifyNote}{' '}
                 <Link href={`/${lang}/contact?sujet=contenu&site=${s.slug}`} style={{ fontWeight: 600 }}>{d.sites.suggest} →</Link>
               </div>
             )}

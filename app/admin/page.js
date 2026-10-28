@@ -18,6 +18,7 @@ const SITE_FIELDS = [
   ['image_source', 'Lien source de la photo', 'text'],
   ['sources', 'Sources (une URL par ligne)', 'list'],
   ['status', 'Statut', 'select', ['a_verifier', 'verifie']],
+  ['limited', 'Informations limitées (« à documenter »)', 'checkbox'],
   ['featured', 'À la une', 'checkbox'], ['published', 'Publié', 'checkbox'],
   ['sort', 'Ordre', 'number'],
 ];

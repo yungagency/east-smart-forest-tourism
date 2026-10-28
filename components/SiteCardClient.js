@@ -24,6 +24,8 @@ export default function SiteCard({ site, lang, d }) {
           <span>{site.commune}</span>
           {site.status === 'verifie' ? (
             <span className="badge badge-ok">{d.sites.verified}</span>
+          ) : site.limited ? (
+            <span className="badge badge-limited">{d.sites.limited}</span>
           ) : (
             <span className="badge badge-warn">{d.sites.toVerify}</span>
           )}

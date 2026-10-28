@@ -24,7 +24,6 @@ export default function Header({ lang, nav, partner }) {
     { href: `/${lang}/a-propos`, label: nav.about },
     { href: `/${lang}/sites`, label: nav.sites },
     { href: `/${lang}/visite-3d`, label: nav.tour3d },
-    { href: `/${lang}/opportunites`, label: nav.opps },
     { href: `/${lang}/contact`, label: nav.contact },
   ];
   const active = (l) => (l.exact ? isHome : path.startsWith(l.href));
@@ -51,7 +50,7 @@ export default function Header({ lang, nav, partner }) {
             <Link href={`/fr${rest}`} className={lang === 'fr' ? 'on' : ''}>FR</Link>
             <Link href={`/en${rest}`} className={lang === 'en' ? 'on' : ''}>EN</Link>
           </div>
-          <Link href={`/${lang}/contact?sujet=partenariat`} className="btn btn-green nav-cta" onClick={() => setOpen(false)}>
+          <Link href={`/${lang}/opportunites`} className={`btn btn-green nav-cta ${path.startsWith(`/${lang}/opportunites`) ? 'is-on' : ''}`} onClick={() => setOpen(false)}>
             <Icon name="handshake" size={20} /> {partner}
           </Link>
         </nav>

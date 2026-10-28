@@ -34,6 +34,7 @@ create table if not exists public.sites (
   image_source text,
   sources text[] not null default '{}',
   status text not null default 'a_verifier' check (status in ('a_verifier','verifie')),
+  limited boolean not null default false,
   featured boolean not null default false,
   published boolean not null default true,
   sort integer not null default 0,
@@ -44,6 +45,7 @@ create table if not exists public.sites (
 -- Colonnes ajoutées après la première version (sans effet si elles existent déjà)
 alter table public.sites add column if not exists image_credit text;
 alter table public.sites add column if not exists image_source text;
+alter table public.sites add column if not exists limited boolean not null default false;
 
 -- Pistes d'investissement
 create table if not exists public.opportunities (

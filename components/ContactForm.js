@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { getSupabase } from '@/lib/supabase';
 import { SITE } from '@/lib/site-config';
 
-export default function ContactForm({ d, defaultSubject = 'partenariat', defaultMessage = '' }) {
+export default function ContactForm({ d, lang = 'fr', defaultSubject = 'partenariat', defaultMessage = '' }) {
   const c = d.contact;
   const [state, setState] = useState('idle');
 
@@ -49,6 +49,7 @@ export default function ContactForm({ d, defaultSubject = 'partenariat', default
       <input name="website" tabIndex={-1} autoComplete="off" style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true" />
       {state === 'ok' && <div className="alert alert-ok">{c.ok}</div>}
       {state === 'err' && <div className="alert alert-err">{c.err}</div>}
+      <p className="form-privacy">{c.privacy} <a href={`/${lang}/mentions-legales`}>{c.privacyLink}</a></p>
       <div><button className="btn btn-dark" disabled={state === 'sending'}>{state === 'sending' ? c.sending : c.send}</button></div>
     </form>
   );

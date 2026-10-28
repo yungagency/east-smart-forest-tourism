@@ -17,7 +17,7 @@ export default async function SitesPage({ params }) {
     <>
       <section className="page-head">
         <div className="wrap">
-          <div className="eyebrow" style={{ color: '#e0a64a' }}>{d.hero.kicker}</div>
+          <div className="eyebrow">{d.hero.kicker}</div>
           <h1>{d.sites.title}</h1>
           <p className="lead">{d.sites.intro}</p>
         </div>

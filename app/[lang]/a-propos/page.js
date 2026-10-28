@@ -14,7 +14,7 @@ export default async function About({ params }) {
     <>
       <section className="page-head">
         <div className="wrap">
-          <div className="eyebrow" style={{ color: '#e0a64a' }}>East Smart Forest &amp; Tourism</div>
+          <div className="eyebrow">East Smart Forest &amp; Tourism</div>
           <h1>{a.title}</h1>
           <p className="lead">{a.visionText}</p>
         </div>
@@ -28,6 +28,20 @@ export default async function About({ params }) {
           <div className="panel" style={{ background: '#fff' }}>
             <div className="eyebrow">{a.status}</div>
             <p style={{ margin: 0 }}>{a.statusText}</p>
+          </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="wrap">
+          <h2>{d.phases.title}</h2>
+          <div className="phases" style={{ marginTop: 24 }}>
+            {d.phases.items.map((p, i) => (
+              <div key={p.t} className={`phase ${i === 0 ? 'now' : ''}`}>
+                <small>{p.k}</small>
+                <h3>{p.t}</h3>
+                <p>{p.d}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

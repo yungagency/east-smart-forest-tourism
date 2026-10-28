@@ -34,6 +34,7 @@ export default async function Home({ params }) {
           alt=""
           fetchPriority="high"
         />
+        <span className="hero-tag">{d.illustration}</span>
         <div className="hero-shade" />
         <div className="wrap hero-in">
           <div className="hero-kicker">{L.kicker}</div>
@@ -121,7 +122,7 @@ export default async function Home({ params }) {
               <div className="eyebrow">{d.nav.map}</div>
               <h2>{d.mapTitle}</h2>
             </div>
-            <Link href={`/${lang}/opportunites`} className="btn btn-outline">{d.oppsTeaser.cta} <Icon name="arrow" size={16} /></Link>
+            <Link href={`/${lang}/visite-3d`} className="btn btn-outline">{d.tour3d.cta} <Icon name="arrow" size={16} /></Link>
           </div>
           <MapView points={points} lang={lang} />
           <p className="muted small" style={{ marginTop: 8 }}>{d.mapNote}</p>

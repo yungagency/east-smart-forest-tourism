@@ -29,6 +29,7 @@ export default function Footer({ lang, d }) {
           <Link href={`/${lang}/a-propos`}>{d.nav.about}</Link>
           <Link href={`/${lang}/contact`}>{d.nav.contact}</Link>
           <Link href={`/${lang}/credits`}>{d.credits.link}</Link>
+          <Link href={`/${lang}/mentions-legales`}>{d.legalLink}</Link>
           <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
           <a href={`tel:${SITE.phoneHref}`}>{SITE.phone}</a>
         </div>

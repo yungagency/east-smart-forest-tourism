@@ -24,7 +24,7 @@ export default async function Contact({ params, searchParams }) {
       </section>
       <section className="section">
         <div className="wrap split" style={{ alignItems: 'start' }}>
-          <ContactForm d={d} defaultSubject={subj} defaultMessage={defaultMessage} />
+          <ContactForm d={d} lang={lang} defaultSubject={subj} defaultMessage={defaultMessage} />
           <div className="panel">
             <div className="eyebrow">{d.contact.direct}</div>
             <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
