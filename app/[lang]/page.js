@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getDict } from '@/lib/i18n';
 import { getSites, t } from '@/lib/data';
-import { HERO_IMAGE, WHY_IMAGE, PILLARS_IMAGE } from '@/lib/seed';
+import { WHY_IMAGE, PILLARS_IMAGE } from '@/lib/seed';
 import { SITE } from '@/lib/site-config';
 import SiteCard from '@/components/SiteCard';
 import MapView from '@/components/MapView';
@@ -26,7 +26,14 @@ export default async function Home({ params }) {
       {/* HERO */}
       <section className="hero">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="hero-photo" src={HERO_IMAGE.image_url} alt="" referrerPolicy="no-referrer" />
+        <img
+          className="hero-photo"
+          src="/images/hero-east.jpg"
+          srcSet="/images/hero-east-960.jpg 960w, /images/hero-east.jpg 1672w"
+          sizes="100vw"
+          alt=""
+          fetchPriority="high"
+        />
         <div className="hero-shade" />
         <div className="wrap hero-in">
           <div className="hero-kicker">{L.kicker}</div>
@@ -39,7 +46,6 @@ export default async function Home({ params }) {
             <Link className="btn btn-ghost" href={`/${lang}/sites`}><Icon name="map" size={18} /> {L.cta2}</Link>
           </div>
         </div>
-        <a className="hero-credit" href={HERO_IMAGE.image_source} target="_blank" rel="noopener noreferrer">{HERO_IMAGE.image_credit}</a>
       </section>
 
       {/* VISION / PROJET / OBJECTIFS */}
