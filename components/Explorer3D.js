@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import 'leaflet/dist/leaflet.css';
 
 // Imagerie satellite : EOX Sentinel-2 cloudless 2016 (CC BY 4.0, Copernicus Sentinel-2, résolution ~10 m)
 // Relief : Terrain Tiles (AWS Open Data / Mapzen, encodage Terrarium)
@@ -22,6 +23,8 @@ export default function Explorer3D({ sites, lang, t3 }) {
   const [touring, setTouring] = useState(false);
   const [relief, setRelief] = useState(1.8);
   const [is3d, setIs3d] = useState(true);
+  const [fallback, setFallback] = useState(false);
+  const [slow, setSlow] = useState(false);
 
   const located = sites.filter((s) => typeof s.lat === 'number' && typeof s.lng === 'number');
   const name = (s) => s[`name_${lang}`] || s.name_fr;
@@ -30,9 +33,15 @@ export default function Explorer3D({ sites, lang, t3 }) {
   useEffect(() => {
     let map;
     let cancelled = false;
+    let slowTimer;
     (async () => {
+      // WebGL2 indispensable pour la 3D : sinon, vue satellite 2D
+      let gl2 = false;
+      try { gl2 = !!document.createElement('canvas').getContext('webgl2'); } catch (e) { gl2 = false; }
+      if (!gl2) { setFallback(true); return; }
       const maplibregl = (await import('maplibre-gl')).default;
       if (cancelled || !el.current) return;
+      slowTimer = setTimeout(() => setSlow(true), 15000);
       try {
         map = new maplibregl.Map({
           container: el.current,
@@ -59,7 +68,8 @@ export default function Explorer3D({ sites, lang, t3 }) {
           },
         });
       } catch (e) {
-        setError(t3.noWebgl);
+        clearTimeout(slowTimer);
+        setFallback(true);
         return;
       }
       mapRef.current = map;
@@ -68,7 +78,12 @@ export default function Explorer3D({ sites, lang, t3 }) {
       map.addControl(new maplibregl.ScaleControl({ unit: 'metric' }), 'bottom-left');
       map.addControl(new maplibregl.AttributionControl({ compact: true }), 'bottom-right');
 
-      map.on('load', () => {
+      let markersAdded = false;
+      const onStyle = () => {
+        if (markersAdded) return;
+        markersAdded = true;
+        clearTimeout(slowTimer);
+        setSlow(false);
         located.forEach((s) => {
           const node = document.createElement('button');
           node.className = 'm3d-marker';
@@ -79,13 +94,18 @@ export default function Explorer3D({ sites, lang, t3 }) {
           new maplibregl.Marker({ element: node, anchor: 'bottom' }).setLngLat([s.lng, s.lat]).addTo(map);
         });
         setReady(true);
-      });
+      };
+      // Affiche la carte dès que le style est prêt, sans attendre toutes les tuiles
+      map.once('style.load', onStyle);
+      map.once('load', onStyle);
       map.on('error', (e) => {
-        if (e && e.error && /WebGL/i.test(String(e.error.message))) setError(t3.noWebgl);
+        const msg = String((e && e.error && e.error.message) || '');
+        if (/webgl/i.test(msg)) { setFallback(true); }
       });
     })();
     return () => {
       cancelled = true;
+      clearTimeout(slowTimer);
       clearTimeout(tourRef.current);
       if (map) map.remove();
       mapRef.current = null;
@@ -152,6 +172,15 @@ export default function Explorer3D({ sites, lang, t3 }) {
 
   const current = located.find((s) => s.slug === active);
 
+  if (fallback) {
+    return (
+      <div>
+        <div className="note" style={{ marginTop: 0 }}>{t3.fallback}</div>
+        <Satellite2D sites={located} lang={lang} t3={t3} />
+      </div>
+    );
+  }
+
   return (
     <div className="m3d">
       <aside className="m3d-panel">
@@ -181,7 +210,12 @@ export default function Explorer3D({ sites, lang, t3 }) {
       </aside>
       <div className="m3d-stage">
         <div ref={el} className="m3d-map" />
-        {!ready && !error && <div className="m3d-overlay">{t3.loading}</div>}
+        {!ready && !error && (
+          <div className="m3d-loading">
+            <span>{slow ? t3.slow : t3.loading}</span>
+            {slow && <button className="btn btn-primary" onClick={() => setFallback(true)}>{t3.use2d}</button>}
+          </div>
+        )}
         {error && <div className="m3d-overlay">{error}</div>}
         {current && (
           <div className="m3d-card">
@@ -193,4 +227,27 @@ export default function Explorer3D({ sites, lang, t3 }) {
       </div>
     </div>
   );
+}
+
+// Vue de secours : satellite 2D (Leaflet), fonctionne sur tous les navigateurs
+function Satellite2D({ sites, lang, t3 }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    let map;
+    let cancelled = false;
+    (async () => {
+      const L = (await import('leaflet')).default;
+      if (cancelled || !ref.current) return;
+      map = L.map(ref.current, { scrollWheelZoom: true }).setView([4.0, 14.1], 7);
+      L.tileLayer(SAT_TILES[0], { maxZoom: 15, attribution: SAT_ATTR }).addTo(map);
+      sites.forEach((s) => {
+        const name = (s[`name_${lang}`] || s.name_fr).replace(/</g, '&lt;');
+        L.circleMarker([s.lat, s.lng], { radius: 9, color: '#fff', weight: 2, fillColor: COLORS[s.category] || COLORS.parc, fillOpacity: 1 })
+          .addTo(map)
+          .bindPopup(`<a href="/${lang}/sites/${s.slug}">${name}</a>`);
+      });
+    })();
+    return () => { cancelled = true; if (map) map.remove(); };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  return <div ref={ref} className="map" style={{ height: 560 }} role="region" aria-label={t3.title} />;
 }
