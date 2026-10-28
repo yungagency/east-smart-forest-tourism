@@ -13,9 +13,16 @@ export async function generateMetadata({ params }) {
   const d = getDict(lang);
   return {
     title: { default: `East Smart Forest & Tourism · ${d.tagline}`, template: '%s · East Smart Forest & Tourism' },
-    description: d.hero.text,
+    description: d.landing.text,
     alternates: { languages: { fr: '/fr', en: '/en' } },
-    openGraph: { title: 'East Smart Forest & Tourism', description: d.hero.text, type: 'website', locale: lang === 'en' ? 'en_US' : 'fr_FR' },
+    openGraph: {
+      title: 'East Smart Forest & Tourism',
+      description: d.landing.text,
+      type: 'website',
+      locale: lang === 'en' ? 'en_US' : 'fr_FR',
+      images: [{ url: '/images/hero-east-960.jpg', width: 960, height: 540, alt: 'East Smart Forest & Tourism' }],
+    },
+    twitter: { card: 'summary_large_image', images: ['/images/hero-east-960.jpg'] },
   };
 }
 

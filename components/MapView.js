@@ -18,7 +18,7 @@ export default function MapView({ points = [], lang = 'fr', small = false, cente
       mapRef.current = map;
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
-        attribution: '&copy; OpenStreetMap',
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
       const valid = points.filter((p) => typeof p.lat === 'number' && typeof p.lng === 'number');
       valid.forEach((p) => {
