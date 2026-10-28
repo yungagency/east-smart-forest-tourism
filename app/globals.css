@@ -351,7 +351,7 @@ a.card:hover .card-img img { transform: scale(1.04); }
 .m3d-list i { flex: none; width: 10px; height: 10px; border-radius: 50%; }
 .m3d-list small { display: block; color: var(--muted); font-size: .75rem; font-weight: 400; }
 .m3d-stage { position: relative; border-radius: var(--radius); overflow: hidden; background: #0a3420; min-height: 0; }
-.m3d-map { position: absolute; inset: 0; }
+.m3d-stage .m3d-map { position: absolute !important; top: 0; left: 0; right: 0; bottom: 0; width: 100%; height: 100%; }
 .m3d-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; color: #fff; background: rgba(10,52,32,.7); font-weight: 600; }
 .m3d-card { position: absolute; left: 16px; bottom: 16px; max-width: 360px; background: rgba(255,255,255,.96); border-radius: 14px; padding: 16px 18px; box-shadow: var(--shadow); }
 .m3d-card b { display: block; font-family: var(--font-display), sans-serif; color: var(--g900); margin-bottom: 4px; }

@@ -73,6 +73,10 @@ export default function Explorer3D({ sites, lang, t3 }) {
         return;
       }
       mapRef.current = map;
+      // Recalcule la taille si le conteneur change (mise en page, plein écran, rotation mobile)
+      const ro = new ResizeObserver(() => map.resize());
+      ro.observe(el.current);
+      map.once('remove', () => ro.disconnect());
       map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), 'top-right');
       map.addControl(new maplibregl.FullscreenControl(), 'top-right');
       map.addControl(new maplibregl.ScaleControl({ unit: 'metric' }), 'bottom-left');
