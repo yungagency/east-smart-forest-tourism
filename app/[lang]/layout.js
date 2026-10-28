@@ -26,7 +26,7 @@ export default async function LangLayout({ children, params }) {
   return (
     <>
       <HtmlLang lang={lang} />
-      <Header lang={lang} nav={d.nav} />
+      <Header lang={lang} nav={d.nav} partner={d.landing.partner} />
       <main>{children}</main>
       <Footer lang={lang} d={d} />
     </>

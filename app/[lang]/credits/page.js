@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { getDict } from '@/lib/i18n';
 import { getSites, t } from '@/lib/data';
-import { HERO_IMAGE } from '@/lib/seed';
 
 export const revalidate = 60;
 
@@ -14,7 +13,7 @@ export default async function Credits({ params }) {
   const { lang } = await params;
   const d = getDict(lang);
   const sites = (await getSites()).filter((s) => s.image_url && s.image_credit);
-  const items = [{ name: d.heroCredit, ...HERO_IMAGE }, ...sites.map((s) => ({ name: t(s, 'name', lang), slug: s.slug, ...s }))];
+  const items = [...sites.map((s) => ({ name: t(s, 'name', lang), slug: s.slug, ...s }))];
   return (
     <>
       <section className="page-head">

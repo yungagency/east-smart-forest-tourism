@@ -1,7 +1,7 @@
-import { Fraunces, Inter } from 'next/font/google';
+import { Poppins, Inter } from 'next/font/google';
 import './globals.css';
 
-const display = Fraunces({ subsets: ['latin'], variable: '--font-display', weight: ['500', '600'] });
+const display = Poppins({ subsets: ['latin'], variable: '--font-display', weight: ['500', '600', '700'] });
 const body = Inter({ subsets: ['latin'], variable: '--font-body' });
 
 export const metadata = {
