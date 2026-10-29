@@ -1,0 +1,210 @@
+{
+ "ele1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Loxodontacyclotis.jpg/960px-Loxodontacyclotis.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Loxodontacyclotis.jpg"
+ },
+ "ele2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Forest_elephant_group_1_%286841415460%29.jpg/960px-Forest_elephant_group_1_%286841415460%29.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Forest_elephant_group_1_%286841415460%29.jpg"
+ },
+ "ele3": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/c/c0/Elefanti.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Elefanti.jpg"
+ },
+ "eleT": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Elephant_footprint%2C_West_Gonja_%28P1100394%29.jpg/960px-Elephant_footprint%2C_West_Gonja_%28P1100394%29.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Elephant_footprint%2C_West_Gonja_%28P1100394%29.jpg"
+ },
+ "gor1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/WesternLowlandGorilla03.jpg/960px-WesternLowlandGorilla03.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:WesternLowlandGorilla03.jpg"
+ },
+ "gor2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Silverback_%2831573827967%29.jpg/960px-Silverback_%2831573827967%29.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Silverback_%2831573827967%29.jpg"
+ },
+ "gor3": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/WesternLowlandGorilla05.jpg/960px-WesternLowlandGorilla05.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:WesternLowlandGorilla05.jpg"
+ },
+ "chi1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Just_Sit_Here_%28118964695%29.jpeg/960px-Just_Sit_Here_%28118964695%29.jpeg",
+  "page": "https://commons.wikimedia.org/wiki/File:Just_Sit_Here_%28118964695%29.jpeg"
+ },
+ "chi2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Group_of_Chimpanzee.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Group_of_Chimpanzee.jpg"
+ },
+ "bon1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Tragelaphus_eurycerus_-Marwell_Wildlife%2C_Hampshire%2C_England-8a.jpg/960px-Tragelaphus_eurycerus_-Marwell_Wildlife%2C_Hampshire%2C_England-8a.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Tragelaphus_eurycerus_-Marwell_Wildlife%2C_Hampshire%2C_England-8a.jpg"
+ },
+ "bon2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Eastern_Bongo_at_Jacksonville_Zoo.jpg/960px-Eastern_Bongo_at_Jacksonville_Zoo.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Eastern_Bongo_at_Jacksonville_Zoo.jpg"
+ },
+ "sit1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Sitatungas.jpg/960px-Sitatungas.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Sitatungas.jpg"
+ },
+ "sit2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Sitatunga_Tragelaphus_spekii_gratus_RB1.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Sitatunga_Tragelaphus_spekii_gratus_RB1.jpg"
+ },
+ "buf0": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Buffle_dans_le_Parc_National_de_Lob%C3%A9k%C3%A9.jpg/960px-Buffle_dans_le_Parc_National_de_Lob%C3%A9k%C3%A9.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Buffle_dans_le_Parc_National_de_Lob%C3%A9k%C3%A9.jpg"
+ },
+ "buf1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/African_Forest_Buffalo.jpg/960px-African_Forest_Buffalo.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:African_Forest_Buffalo.jpg"
+ },
+ "buf2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Gabon_Loango_National_Park_Wild_Buffalo_Single.jpeg/960px-Gabon_Loango_National_Park_Wild_Buffalo_Single.jpeg",
+  "page": "https://commons.wikimedia.org/wiki/File:Gabon_Loango_National_Park_Wild_Buffalo_Single.jpeg"
+ },
+ "leo0": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Panth%C3%A8re_dans_le_Parc_National_de_Lob%C3%A9k%C3%A9.jpg/960px-Panth%C3%A8re_dans_le_Parc_National_de_Lob%C3%A9k%C3%A9.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Panth%C3%A8re_dans_le_Parc_National_de_Lob%C3%A9k%C3%A9.jpg"
+ },
+ "leo1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Leopard_%28Panthera_pardus_pardus%29_Kruger.jpg/960px-Leopard_%28Panthera_pardus_pardus%29_Kruger.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Leopard_%28Panthera_pardus_pardus%29_Kruger.jpg"
+ },
+ "leo2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/African_Leopard_%28Panthera_pardus_ssp._pardus%29_03.jpg/960px-African_Leopard_%28Panthera_pardus_ssp._pardus%29_03.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:African_Leopard_%28Panthera_pardus_ssp._pardus%29_03.jpg"
+ },
+ "leoT": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Mammal_Leopard_Pugmark_IMG_9615_01.jpg/960px-Mammal_Leopard_Pugmark_IMG_9615_01.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Mammal_Leopard_Pugmark_IMG_9615_01.jpg"
+ },
+ "pan1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Photo_Giant_pangolin_in_Antwerp_Zoo_1940_-_Touring_Club_Italiano_2_5135.jpg/960px-Photo_Giant_pangolin_in_Antwerp_Zoo_1940_-_Touring_Club_Italiano_2_5135.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Photo_Giant_pangolin_in_Antwerp_Zoo_1940_-_Touring_Club_Italiano_2_5135.jpg"
+ },
+ "hip1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Portrait_Hippopotamus_in_the_water.jpg/960px-Portrait_Hippopotamus_in_the_water.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Portrait_Hippopotamus_in_the_water.jpg"
+ },
+ "hip2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Common_hippos_%28Hippopotamus_amphibius_kiboko%29_Serengeti.jpg/960px-Common_hippos_%28Hippopotamus_amphibius_kiboko%29_Serengeti.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Common_hippos_%28Hippopotamus_amphibius_kiboko%29_Serengeti.jpg"
+ },
+ "hipT": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/4/4e/An_hippopotamus_foot_muddy_mark_in_Queen_Elizabeth_National_park%2C_Uganda_01.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:An_hippopotamus_foot_muddy_mark_in_Queen_Elizabeth_National_park%2C_Uganda_01.jpg"
+ },
+ "par1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Psittacus_erithacus_663525642_%28rotated%29.jpg/960px-Psittacus_erithacus_663525642_%28rotated%29.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Psittacus_erithacus_663525642_%28rotated%29.jpg"
+ },
+ "par2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Congo_African_Grey_Parrot_-head_detail.jpg/960px-Congo_African_Grey_Parrot_-head_detail.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Congo_African_Grey_Parrot_-head_detail.jpg"
+ },
+ "par3": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Perroquet_%C3%A0_Yampopo_Beach_-_Douala.jpg/960px-Perroquet_%C3%A0_Yampopo_Beach_-_Douala.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Perroquet_%C3%A0_Yampopo_Beach_-_Douala.jpg"
+ },
+ "hog1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Hylochoerus_meinertzhageni.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Hylochoerus_meinertzhageni.jpg"
+ },
+ "hog2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Hylochoerus_meinertzhageni2.jpg/960px-Hylochoerus_meinertzhageni2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Hylochoerus_meinertzhageni2.jpg"
+ },
+ "man1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Mandrilperspective6.jpg/960px-Mandrilperspective6.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Mandrilperspective6.jpg"
+ },
+ "man2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Mandrils_%2836370557765%29.jpg/960px-Mandrils_%2836370557765%29.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Mandrils_%2836370557765%29.jpg"
+ },
+ "man3": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Mandrill_Albert_September_2015_Zoo_Berlin_%282%29.jpg/960px-Mandrill_Albert_September_2015_Zoo_Berlin_%282%29.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Mandrill_Albert_September_2015_Zoo_Berlin_%282%29.jpg"
+ },
+ "mgb1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Mantelmangabe_Dja.JPG/960px-Mantelmangabe_Dja.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Mantelmangabe_Dja.JPG"
+ },
+ "che1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Hyemoschus_aquaticus_02_MWNH_271.jpg/960px-Hyemoschus_aquaticus_02_MWNH_271.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Hyemoschus_aquaticus_02_MWNH_271.jpg"
+ },
+ "che2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Die_S%C3%A4ugthiere_in_Abbildungen_nach_der_Natur%2C_mit_Beschreibungen_%28Plate_25%29_%288610054436%29.jpg/960px-Die_S%C3%A4ugthiere_in_Abbildungen_nach_der_Natur%2C_mit_Beschreibungen_%28Plate_25%29_%288610054436%29.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Die_S%C3%A4ugthiere_in_Abbildungen_nach_der_Natur%2C_mit_Beschreibungen_%28Plate_25%29_%288610054436%29.jpg"
+ },
+ "cro1": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/NileCrocodile.jpg/960px-NileCrocodile.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:NileCrocodile.jpg"
+ },
+ "cro2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Nile_Crocodile_%2844335259425%29.jpg/960px-Nile_Crocodile_%2844335259425%29.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Nile_Crocodile_%2844335259425%29.jpg"
+ },
+ "cro3": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Nile_crocodile_head.jpg/960px-Nile_crocodile_head.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Nile_crocodile_head.jpg"
+ },
+ "s_lob_mir": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/First_mirador_in_Lob%C3%A9k%C3%A9.jpg/960px-First_mirador_in_Lob%C3%A9k%C3%A9.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:First_mirador_in_Lob%C3%A9k%C3%A9.jpg"
+ },
+ "s_dja_for": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Foret_le_dja.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Foret_le_dja.jpg"
+ },
+ "s_dja_for2": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/4/43/Foret_le_dja2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Foret_le_dja2.jpg"
+ },
+ "s_dja_veg": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Vegetation_Dja.JPG/960px-Vegetation_Dja.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Vegetation_Dja.JPG"
+ },
+ "s_dja_sign": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Eingangsschild_Dja_Somalomo.JPG/960px-Eingangsschild_Dja_Somalomo.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Eingangsschild_Dja_Somalomo.JPG"
+ },
+ "s_dja_dja": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Dja.JPG/960px-Dja.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Dja.JPG"
+ },
+ "s_md_gal": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/For%C3%AAt_Galerie_-_Parc_National_du_Mbam_et_Djerem.jpg/960px-For%C3%AAt_Galerie_-_Parc_National_du_Mbam_et_Djerem.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:For%C3%AAt_Galerie_-_Parc_National_du_Mbam_et_Djerem.jpg"
+ },
+ "s_md_aer": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Vue_aerienne_du_Trac%C3%A9_du_Djerem_ou_haute_Sanaga_-_Parc_national_du_Mbam_et_Djerem.jpg/960px-Vue_aerienne_du_Trac%C3%A9_du_Djerem_ou_haute_Sanaga_-_Parc_national_du_Mbam_et_Djerem.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Vue_aerienne_du_Trac%C3%A9_du_Djerem_ou_haute_Sanaga_-_Parc_national_du_Mbam_et_Djerem.jpg"
+ },
+ "s_dou_can": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Canon_de_80_mm_en_position_-_Doum%C3%A9_%28vers%29_-_M%C3%A9diath%C3%A8que_de_l%27architecture_et_du_patrimoine_-_AP62T021052.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Canon_de_80_mm_en_position_-_Doum%C3%A9_%28vers%29_-_M%C3%A9diath%C3%A8que_de_l%27architecture_et_du_patrimoine_-_AP62T021052.jpg"
+ },
+ "s_dou_abri": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/9/91/Abri_de_mitrailleuses_allemandes_-_Doum%C3%A9_%28vers%29_-_M%C3%A9diath%C3%A8que_de_l%27architecture_et_du_patrimoine_-_AP62T021053.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Abri_de_mitrailleuses_allemandes_-_Doum%C3%A9_%28vers%29_-_M%C3%A9diath%C3%A8que_de_l%27architecture_et_du_patrimoine_-_AP62T021053.jpg"
+ },
+ "s_bat_col": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Colonial_relics_in_Batouri.jpg/960px-Colonial_relics_in_Batouri.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Colonial_relics_in_Batouri.jpg"
+ },
+ "s_bat_bot": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Botanic_gardens_Batouri.jpg/960px-Botanic_gardens_Batouri.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Botanic_gardens_Batouri.jpg"
+ },
+ "s_bat_moon": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/3/39/Moon_over_Batouri%2C_East-Cameroon.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Moon_over_Batouri%2C_East-Cameroon.jpg"
+ },
+ "s_ber_plq": {
+  "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Plaque_Bertoua.jpg/960px-Plaque_Bertoua.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Plaque_Bertoua.jpg"
+ }
+}

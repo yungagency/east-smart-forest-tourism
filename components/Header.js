@@ -20,11 +20,12 @@ export default function Header({ lang, nav, partner }) {
   }, []);
 
   const links = [
-    { href: `/${lang}`, label: nav.home, exact: true },
     { href: `/${lang}/a-propos`, label: nav.about },
+    { href: `/${lang}/carte`, label: nav.map },
     { href: `/${lang}/sites`, label: nav.sites },
+    { href: `/${lang}/faune`, label: nav.fauna },
     { href: `/${lang}/visite-3d`, label: nav.tour3d },
-    { href: `/${lang}/contact`, label: nav.contact },
+    { href: `/${lang}/services`, label: nav.services },
   ];
   const active = (l) => (l.exact ? isHome : path.startsWith(l.href));
 

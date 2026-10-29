@@ -80,13 +80,14 @@ export default function Admin() {
   return (
     <Shell email={session.user.email} onLogout={() => sb.auth.signOut()}>
       <div className="tabs">
-        {[['sites', 'Destinations'], ['opportunities', 'Opportunités'], ['messages', 'Messages']].map(([k, l]) => (
+        {[['sites', 'Destinations'], ['opportunities', 'Opportunités'], ['messages', 'Messages'], ['booking_requests', 'Réservations'], ['provider_applications', 'Prestataires'], ['proposals', 'Propositions']].map(([k, l]) => (
           <button key={k} className={`chip ${tab === k ? 'on' : ''}`} onClick={() => setTab(k)}>{l}</button>
         ))}
       </div>
       {tab === 'sites' && <Collection sb={sb} table="sites" fields={SITE_FIELDS} seed={SEED_SITES} titleKey="name_fr" />}
       {tab === 'opportunities' && <Collection sb={sb} table="opportunities" fields={OPP_FIELDS} seed={SEED_OPPORTUNITIES} titleKey="title_fr" />}
       {tab === 'messages' && <Messages sb={sb} />}
+      {['booking_requests', 'provider_applications', 'proposals'].includes(tab) && <Inbox key={tab} sb={sb} table={tab} />}
     </Shell>
   );
 }
@@ -280,6 +281,46 @@ function Messages({ sb }) {
             </tr>
           ))}
           {rows.length === 0 && <tr><td colSpan={5} className="muted">Aucun message.</td></tr>}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+// Demandes reçues : réservations, inscriptions de prestataires, propositions (projets, terrains, partenariats)
+const SKIP = ['id', 'created_at'];
+function Inbox({ sb, table }) {
+  const [rows, setRows] = useState([]);
+  const [err, setErr] = useState('');
+  const load = useCallback(async () => {
+    const { data, error } = await sb.from(table).select('*').order('created_at', { ascending: false });
+    if (error) setErr(`${error.message} (table « ${table} » : exécutez la dernière version de supabase/schema.sql)`);
+    setRows(data || []);
+  }, [sb, table]);
+  useEffect(() => { load(); }, [load]);
+  async function remove(id) {
+    if (!window.confirm('Supprimer cette demande ?')) return;
+    await sb.from(table).delete().eq('id', id);
+    load();
+  }
+  return (
+    <div className="table-wrap">
+      {err && <div className="alert alert-err">{err}</div>}
+      <table className="table">
+        <thead><tr><th>Date</th><th>Détails</th><th></th></tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.id}>
+              <td className="small">{new Date(r.created_at).toLocaleString('fr-FR')}</td>
+              <td style={{ maxWidth: 640 }}>
+                {Object.entries(r).filter(([k, v]) => !SKIP.includes(k) && v !== null && v !== '').map(([k, v]) => (
+                  <div key={k} className="small"><b>{k}</b> : <span style={{ whiteSpace: 'pre-wrap' }}>{typeof v === 'boolean' ? (v ? 'oui' : 'non') : String(v)}</span></div>
+                ))}
+              </td>
+              <td><button className="link-btn danger" onClick={() => remove(r.id)}>Supprimer</button></td>
+            </tr>
+          ))}
+          {rows.length === 0 && !err && <tr><td colSpan={3} className="muted">Aucune demande.</td></tr>}
         </tbody>
       </table>
     </div>

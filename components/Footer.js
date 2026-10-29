@@ -42,12 +42,17 @@ export default function Footer({ lang, d }) {
           <Link href={`/${lang}`}>{d.nav.home}</Link>
           <Link href={`/${lang}/a-propos`}>{d.nav.about}</Link>
           <Link href={`/${lang}/sites`}>{d.nav.sites}</Link>
+          <Link href={`/${lang}/carte`}>{d.nav.map}</Link>
+          <Link href={`/${lang}/faune`}>{d.nav.fauna}</Link>
           <Link href={`/${lang}/contact`}>{d.nav.contact}</Link>
         </nav>
 
         <nav className="footer-col" aria-label={F.colExplore}>
           <h4>{F.colExplore}</h4>
           <Link href={`/${lang}/visite-3d`}>{d.nav.tour3d}</Link>
+          <Link href={`/${lang}/visite-360`}>{d.nav.pano}</Link>
+          <Link href={`/${lang}/services`}>{d.nav.services}</Link>
+          <Link href={`/${lang}/services/inscription`}>{d.services.register}</Link>
           <Link href={`/${lang}/opportunites`}>{L.partner}</Link>
           <Link href={`/${lang}/credits`}>{d.credits.link}</Link>
           <Link href={`/${lang}/mentions-legales`}>{d.legalLink}</Link>

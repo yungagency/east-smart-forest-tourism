@@ -123,5 +123,55 @@ drop policy if exists "media admin delete" on storage.objects;
 create policy "media admin delete" on storage.objects for delete to authenticated
   using (bucket_id = 'media' and public.is_admin());
 
+
+-- ===== Demandes publiques (formulaires du site) =====
+create table if not exists public.booking_requests (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  target_ref text, target_label text,
+  name text not null check (char_length(name) between 1 and 120),
+  phone text not null check (char_length(phone) between 3 and 40),
+  email text check (email is null or char_length(email) <= 160),
+  arrival date, departure date,
+  people int check (people is null or people between 1 and 200),
+  message text check (message is null or char_length(message) <= 3000),
+  lang text, status text not null default 'nouvelle'
+);
+create table if not exists public.provider_applications (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  business text not null check (char_length(business) between 1 and 160),
+  kind text, town text, contact text,
+  phone text not null check (char_length(phone) between 3 and 40),
+  email text, description text check (description is null or char_length(description) <= 3000),
+  website text, consent boolean not null default false,
+  lang text, status text not null default 'a_verifier'
+);
+create table if not exists public.proposals (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  kind text not null check (kind in ('project','land','partner','local')),
+  name text not null check (char_length(name) between 1 and 120),
+  organization text, phone text not null check (char_length(phone) between 3 and 40),
+  email text, location text, area text, has_documents boolean not null default false,
+  message text not null check (char_length(message) between 1 and 4000),
+  lang text, status text not null default 'a_examiner'
+);
+alter table public.booking_requests enable row level security;
+alter table public.provider_applications enable row level security;
+alter table public.proposals enable row level security;
+do $$
+declare t text;
+begin
+  foreach t in array array['booking_requests','provider_applications','proposals'] loop
+    execute format('drop policy if exists "%1$s public insert" on public.%1$s', t);
+    execute format('create policy "%1$s public insert" on public.%1$s for insert to anon, authenticated with check (true)', t);
+    execute format('drop policy if exists "%1$s admin read" on public.%1$s', t);
+    execute format('create policy "%1$s admin read" on public.%1$s for select to authenticated using (public.is_admin())', t);
+    execute format('drop policy if exists "%1$s admin delete" on public.%1$s', t);
+    execute format('create policy "%1$s admin delete" on public.%1$s for delete to authenticated using (public.is_admin())', t);
+  end loop;
+end $$;
+
 -- ÉTAPE FINALE (après avoir créé votre compte dans Authentication > Users) :
 -- insert into public.admins (user_id) select id from auth.users where email = 'VOTRE_EMAIL';

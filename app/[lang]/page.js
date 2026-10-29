@@ -6,6 +6,7 @@ import { SITE } from '@/lib/site-config';
 import SiteCard from '@/components/SiteCard';
 import MapView from '@/components/MapView';
 import Icon from '@/components/Icons';
+import { FAUNA, SITE_GALLERY } from '@/lib/fauna';
 
 export const revalidate = 60;
 
@@ -115,6 +116,27 @@ export default async function Home({ params }) {
         </div>
       </section>
 
+      {/* MODULES */}
+      <section className="section tight">
+        <div className="wrap mod-grid">
+          {[
+            { href: `/${lang}/carte`, img: SITE_GALLERY['parc-national-de-lobeke']?.[2]?.src, k: d.map },
+            { href: `/${lang}/faune`, img: FAUNA[0].photos[0].src, k: d.fauna },
+            { href: `/${lang}/services`, img: sites.find((x) => x.slug === 'bertoua')?.image_url, k: d.services },
+          ].map((m) => (
+            <Link key={m.href} href={m.href} className="mod-card">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {m.img && <img src={m.img} alt="" loading="lazy" referrerPolicy="no-referrer" />}
+              <div>
+                <h3>{m.k.bandTitle}</h3>
+                <p>{m.k.bandText}</p>
+                <span className="more">{m.k.cta} →</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       <section className="section band">
         <div className="wrap">
           <div className="section-head">
@@ -122,7 +144,7 @@ export default async function Home({ params }) {
               <div className="eyebrow">{d.nav.map}</div>
               <h2>{d.mapTitle}</h2>
             </div>
-            <Link href={`/${lang}/visite-3d`} className="btn btn-outline">{d.tour3d.cta} <Icon name="arrow" size={16} /></Link>
+            <Link href={`/${lang}/carte`} className="btn btn-outline">{d.map.cta} <Icon name="arrow" size={16} /></Link>
           </div>
           <MapView points={points} lang={lang} />
           <p className="muted small" style={{ marginTop: 8 }}>{d.mapNote}</p>
