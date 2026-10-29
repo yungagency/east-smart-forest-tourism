@@ -71,7 +71,7 @@ export default function TourMap({ items, layers, circuits, outline, lang, t, ini
           iconSize: it.kind === 'site' ? [34, 34] : [26, 26],
           iconAnchor: it.kind === 'site' ? [17, 17] : [13, 13],
         });
-        const m = L.marker([it.lat, it.lng], { icon, title: it.name, riseOnHover: true });
+        const m = L.marker([it.lat, it.lng], { icon, title: it.name, riseOnHover: true, zIndexOffset: it.kind === 'site' ? 1000 : 0 });
         m.on('click', () => { setSel(it); setPanel(true); });
         m.addTo(groupsRef.current[it.layer]);
         markersRef.current[it.id] = m;
@@ -122,7 +122,7 @@ export default function TourMap({ items, layers, circuits, outline, lang, t, ini
     c.steps.forEach((s, i) => {
       L.marker([s.lat, s.lng], {
         icon: L.divIcon({ className: 'tm-pin-wrap', html: `<span class="tm-step" style="--c:${c.color}">${i + 1}</span>`, iconSize: [26, 26], iconAnchor: [13, 13] }),
-        title: s.name,
+        title: s.name, zIndexOffset: 500,
       }).bindTooltip(`${i + 1}. ${s.name}`, { direction: 'top', offset: [0, -12] }).addTo(g);
     });
     g.addTo(map);
