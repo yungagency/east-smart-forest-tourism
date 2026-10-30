@@ -44,11 +44,6 @@ export default async function SitePage({ params }) {
           <Link href={`/${lang}/sites`} className="crumb">← {d.sites.back}</Link>
           <div style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap' }}>
             <span className="badge" style={{ background: 'rgba(255,255,255,.12)', color: '#fff' }}>{d.sites.cats[s.category]}</span>
-            {s.status === 'verifie'
-              ? <span className="badge badge-ok">{d.sites.verified}</span>
-              : s.limited
-                ? <span className="badge badge-limited">{d.sites.limited}</span>
-                : <span className="badge badge-warn">{d.sites.toVerify}</span>}
           </div>
           <h1>{t(s, 'name', lang)}</h1>
           <p className="lead">{t(s, 'summary', lang)}</p>
@@ -75,12 +70,10 @@ export default async function SitePage({ params }) {
               </div>
             )}
             {t(s, 'description', lang).split('\n').filter(Boolean).map((p, i) => <p key={i} style={{ fontSize: '1.05rem' }}>{p}</p>)}
-            {s.status !== 'verifie' && (
-              <div className="note">
-                {s.limited ? d.sites.limitedNote : d.sites.verifyNote}{' '}
-                <Link href={`/${lang}/contact?sujet=contenu&site=${s.slug}`} style={{ fontWeight: 600 }}>{d.sites.suggest} →</Link>
-              </div>
-            )}
+            <p className="muted small" style={{ marginTop: 18 }}>
+              {lang === 'en' ? 'Have information or photos of this place?' : 'Vous avez des informations ou des photos de ce lieu ?'}{' '}
+              <Link href={`/${lang}/contact?sujet=contenu&site=${s.slug}`} style={{ fontWeight: 600, color: 'var(--g600)' }}>{lang === 'en' ? 'Share them with us' : 'Partagez-les avec nous'} →</Link>
+            </p>
             {fauna.length > 0 && (
               <>
                 <h2 style={{ marginTop: 32 }}>{d.fauna.onSite}</h2>
@@ -90,7 +83,7 @@ export default async function SitePage({ params }) {
                       <div className="card-img">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={a.photos[0]?.src} alt={tf(a, 'name', lang)} loading="lazy" referrerPolicy="no-referrer" />
-                        <span className="iucn-badge" style={{ background: IUCN[a.iucn].c }}>{a.iucn}</span>
+                        {a.iucn && <span className="iucn-badge" style={{ background: IUCN[a.iucn].c }}>{a.iucn}</span>}
                       </div>
                       <div className="card-body" style={{ padding: 12 }}>
                         <h3 style={{ fontSize: '.98rem' }}>{tf(a, 'name', lang)}</h3>
@@ -132,7 +125,6 @@ export default async function SitePage({ params }) {
               {hasCoords ? (
                 <>
                   <MapView small zoom={8} points={[{ lat: s.lat, lng: s.lng, category: s.category, name: t(s, 'name', lang) }]} lang={lang} />
-                  {s.coords_approx && <p className="muted small" style={{ marginTop: 6 }}>{d.sites.approx}</p>}
                 </>
               ) : (
                 <p className="muted small">{d.sites.noCoords}</p>

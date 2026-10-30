@@ -34,7 +34,7 @@ export default async function FaunaPage({ params }) {
       </section>
       <section className="section band">
         <div className="wrap">
-          <AnimalFinder animals={animals} sites={sites} lang={lang} t={d.fauna} t3={d.fauna.explore3d} />
+          <AnimalFinder animals={animals.filter((a) => a.sites.length)} sites={sites} lang={lang} t={d.fauna} t3={d.fauna.explore3d} />
         </div>
       </section>
     </>

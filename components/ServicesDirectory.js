@@ -34,13 +34,12 @@ export default function ServicesDirectory({ items, lang, t, layers }) {
       )}
       {(type === 'all' || type === 'lodging' || type === 'food') && (
         <>
-          <p className="muted small">{list.length} · {t.fromOsm}</p>
+          <p className="muted small">{list.length} {lang === 'en' ? 'listings' : 'adresses'} · {t.fromOsm}</p>
           <div className="svc-grid">
             {list.map((i) => (
               <div key={i.id} className="svc">
                 <div className="svc-top">
                   <span className="tm-tag" style={{ background: layers[i.layer].c }}>{layers[i.layer][lang] || layers[i.layer].fr}</span>
-                  <span className="badge badge-unv">{lang === 'en' ? 'Unverified' : 'Non vérifié'}</span>
                 </div>
                 <b>{i.name}</b>
                 <small>{i.town || '—'}</small>

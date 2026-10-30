@@ -441,7 +441,7 @@ a.card:hover .card-img img { transform: scale(1.04); }
 .animal-tags { display: flex; gap: 8px; flex-wrap: wrap; }
 .animal-layout { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
 .animal-layout article h2 { margin-top: 36px; font-size: 1.45rem; }
-.id-card { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: 0 0 8px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.id-card { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; margin: 0 0 8px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .id-card > div { padding: 14px 16px; border-right: 1px solid var(--line); }
 .id-card > div:last-child { border-right: 0; }
 .id-card dt { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
@@ -465,7 +465,7 @@ a.card:hover .card-img img { transform: scale(1.04); }
 .mini-item:hover { background: var(--mint); }
 .mini-item img { width: 56px; height: 56px; object-fit: cover; border-radius: 10px; flex: none; }
 .mini-item span { display: grid; font-size: .9rem; }
-@media (max-width: 900px) { .animal-layout { grid-template-columns: 1fr; } .id-card { grid-template-columns: 1fr 1fr; } .id-card > div:nth-child(2) { border-right: 0; } .id-card > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); } }
+@media (max-width: 900px) { .animal-layout { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } .where-item { grid-template-columns: auto 1fr; } .where-actions { grid-column: 1 / -1; } .traces { flex-direction: column; } .animal-hero { min-height: 380px; } }
 
 /* ===== Carte touristique ===== */
@@ -583,3 +583,4 @@ a.card:hover .card-img img { transform: scale(1.04); }
 .m3d-toggle-row { display: flex; gap: 8px; flex-wrap: wrap; }
 
 @media (max-width: 900px) { .m3d-card { left: 10px; right: 10px; top: 10px; max-width: none; } .m3d-photos button { width: 80px; height: 58px; } }
+.card-more { color: var(--g600); font-weight: 600; }

@@ -22,13 +22,7 @@ export default function SiteCard({ site, lang, d }) {
         <p>{t(site, 'summary', lang)}</p>
         <div className="card-meta">
           <span>{site.commune}</span>
-          {site.status === 'verifie' ? (
-            <span className="badge badge-ok">{d.sites.verified}</span>
-          ) : site.limited ? (
-            <span className="badge badge-limited">{d.sites.limited}</span>
-          ) : (
-            <span className="badge badge-warn">{d.sites.toVerify}</span>
-          )}
+          <span className="card-more">{lang === 'en' ? 'Discover' : 'Découvrir'} →</span>
         </div>
       </div>
     </Link>

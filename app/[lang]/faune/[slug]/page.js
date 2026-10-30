@@ -32,8 +32,10 @@ export default async function AnimalPage({ params }) {
   if (!a) notFound();
   const sites = await getSites();
   const where = a.sites.map((s) => sites.find((x) => x.slug === s)).filter(Boolean);
-  const status = IUCN[a.iucn];
-  const others = FAUNA.filter((x) => x.slug !== a.slug && x.sites.some((s) => a.sites.includes(s))).slice(0, 4);
+  const status = a.iucn ? IUCN[a.iucn] : null;
+  const others = (a.sites.length
+    ? FAUNA.filter((x) => x.slug !== a.slug && x.sites.some((s) => a.sites.includes(s)))
+    : FAUNA.filter((x) => x.slug !== a.slug && x.group === a.group)).slice(0, 5);
   const first3d = where.find((s) => typeof s.lat === 'number');
 
   return (
@@ -47,9 +49,11 @@ export default async function AnimalPage({ params }) {
           <div className="eyebrow">{GROUPS[a.group][lang]}</div>
           <h1>{tf(a, 'name', lang)}</h1>
           <p className="animal-sci"><em>{a.sci}</em></p>
-          <div className="animal-tags">
-            <span className="badge" style={{ background: status.c, color: '#fff' }}>{t.status} : {status[lang]} ({a.iucn})</span>
-          </div>
+          {status && (
+            <div className="animal-tags">
+              <span className="badge" style={{ background: status.c, color: '#fff' }}>{t.status} : {status[lang]} ({a.iucn})</span>
+            </div>
+          )}
         </div>
       </section>
 
@@ -59,8 +63,9 @@ export default async function AnimalPage({ params }) {
             <dl className="id-card">
               <div><dt>{lang === 'en' ? 'Common name' : 'Nom français'}</dt><dd>{a.name_fr}</dd></div>
               <div><dt>{t.sci}</dt><dd><em>{a.sci}</em></dd></div>
-              <div><dt>{t.local}</dt><dd className="muted">{t.localTodo}</dd></div>
-              <div><dt>{t.status}</dt><dd>{status[lang]}</dd></div>
+              {a.local && <div><dt>{t.local}</dt><dd>{a.local}</dd></div>}
+              {status && <div><dt>{t.status}</dt><dd>{status[lang]}</dd></div>}
+              <div><dt>{lang === 'en' ? 'Group' : 'Groupe'}</dt><dd>{GROUPS[a.group][lang]}</dd></div>
             </dl>
 
             <h2>{t.presentation}</h2>
@@ -70,8 +75,12 @@ export default async function AnimalPage({ params }) {
             <Gallery photos={a.photos} lang={lang} labels={d.gallery} />
             <p className="muted small" style={{ marginTop: 8 }}>{t.photoNote}</p>
 
-            <h2>{t.description}</h2>
-            <p>{tf(a, 'description', lang)}</p>
+            {tf(a, 'description', lang) && (
+              <>
+                <h2>{t.description}</h2>
+                <p>{tf(a, 'description', lang)}</p>
+              </>
+            )}
 
             <div className="two-col">
               <div className="info-box"><span className="round-ic sm"><Icon name="leaf" size={18} /></span><div><h3>{t.diet}</h3><p>{tf(a, 'diet', lang)}</p></div></div>
@@ -79,6 +88,7 @@ export default async function AnimalPage({ params }) {
             </div>
 
             <h2>{t.where}</h2>
+            {where.length === 0 && <p>{t.regional}</p>}
             <div className="where-list">
               {where.map((s) => (
                 <div key={s.slug} className="where-item">
@@ -91,13 +101,17 @@ export default async function AnimalPage({ params }) {
                 </div>
               ))}
             </div>
-            <p className="muted small">{t.whereNote}</p>
+            {where.length > 0 && <p className="muted small">{t.whereNote}</p>}
 
-            <h2>{t.traces}</h2>
-            <div className="traces">
-              {a.track && <Gallery photos={[a.track]} lang={lang} labels={d.gallery} compact />}
-              <p>{tf(a, 'traces', lang)}</p>
-            </div>
+            {(a.track || tf(a, 'traces', lang)) && (
+              <>
+                <h2>{t.traces}</h2>
+                <div className="traces">
+                  {a.track && <Gallery photos={[a.track]} lang={lang} labels={d.gallery} compact />}
+                  <p>{tf(a, 'traces', lang)}</p>
+                </div>
+              </>
+            )}
 
             <div className="explore-box">
               <div>

@@ -45,13 +45,13 @@ export default function FaunaBrowser({ animals, sites, groups, iucn, lang, t }) 
             <div className="card-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={a.photos[0]?.src} alt={name(a)} loading="lazy" referrerPolicy="no-referrer" />
-              <span className="iucn-badge" style={{ background: iucn[a.iucn].c }} title={iucn[a.iucn][lang]}>{a.iucn}</span>
+              {a.iucn && <span className="iucn-badge" style={{ background: iucn[a.iucn].c }} title={iucn[a.iucn][lang]}>{a.iucn}</span>}
             </div>
             <div className="card-body">
               <h3>{name(a)}</h3>
               <em className="sci">{a.sci}</em>
               <p>{a[`summary_${lang}`] || a.summary_fr}</p>
-              <div className="card-meta"><span>{a.sites.length} {a.sites.length > 1 ? 'sites' : 'site'}</span><span>{iucn[a.iucn][lang]}</span></div>
+              <div className="card-meta"><span>{a.sites.length ? `${a.sites.length} ${a.sites.length > 1 ? 'sites' : 'site'}` : (lang === 'en' ? 'East Region' : "Région de l'Est")}</span><span>{a.iucn ? iucn[a.iucn][lang] : ''}</span></div>
             </div>
           </Link>
         ))}

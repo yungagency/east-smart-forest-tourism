@@ -208,7 +208,7 @@ export default function TourMap({ items, layers, circuits, outline, lang, t, ini
               {sel.town && <small>{sel.town}</small>}
               {sel.summary && <p>{sel.summary}</p>}
               {sel.phone && <p className="small">{t.phone} : <a href={`tel:${sel.phone.replace(/\s/g, '')}`}>{sel.phone}</a></p>}
-              {sel.src === 'osm' && <p className="small muted">{t.unverified} · OpenStreetMap</p>}
+              {sel.src === 'osm' && <p className="small muted">© OpenStreetMap</p>}
               <div className="tm-actions">
                 {sel.href && <a className="btn btn-green" href={sel.href}>{t.openSheet}</a>}
                 {sel.site && !sel.href && <a className="btn btn-green" href={`/${lang}/sites/${sel.site}`}>{t.openSheet}</a>}
