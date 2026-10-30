@@ -51,7 +51,7 @@ p { margin: 0 0 1em; }
 .lead { font-size: 1.1rem; color: var(--muted); max-width: 700px; }
 .muted { color: var(--muted); }
 .small { font-size: 0.85rem; }
-.section-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+.section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
 .section-head h2 { margin: 0; }
 
 /* Buttons */
