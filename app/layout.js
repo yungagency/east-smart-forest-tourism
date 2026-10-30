@@ -5,7 +5,7 @@ const display = Poppins({ subsets: ['latin'], variable: '--font-display', weight
 const body = Inter({ subsets: ['latin'], variable: '--font-body' });
 
 export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://east-smart-forest-tourism.vercel.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://east-smart-forest-tourism-i8w5.vercel.app'),
   title: 'East Smart Forest & Tourism',
   icons: { icon: '/icon.svg' },
 };
