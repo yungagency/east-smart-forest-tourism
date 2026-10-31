@@ -1,2 +1,18 @@
 User-agent: *
+Allow: /
 Disallow: /admin
+
+# Moteurs de recherche et assistants IA (ChatGPT, Claude, Perplexity, Gemini…) explicitement autorisés
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Google-Extended
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+
+Sitemap: https://east-smart-forest-tourism.vercel.app/sitemap.xml
