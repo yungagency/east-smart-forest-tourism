@@ -1,4 +1,5 @@
 'use client';
+import { srcSet, CARD_SIZES } from '@/lib/img';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 
@@ -39,12 +40,13 @@ export default function FaunaBrowser({ animals, sites, groups, iucn, lang, t }) 
         <span className="muted small" style={{ alignSelf: 'center', marginLeft: 6 }}>{list.length} {t.count}</span>
       </div>
       {list.length === 0 && <p className="muted">{t.none}</p>}
+      <h2 className="sr-only">{t.title}</h2>
       <div className="grid fauna-grid">
         {list.map((a) => (
           <Link key={a.slug} href={`/${lang}/faune/${a.slug}`} className="card animal-card">
             <div className="card-img">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={a.photos[0]?.src} alt={name(a)} loading="lazy" referrerPolicy="no-referrer" />
+              <img src={a.photos[0]?.src} srcSet={srcSet(a.photos[0]?.src)} sizes={CARD_SIZES} alt={name(a)} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
               {a.iucn && <span className="iucn-badge" style={{ background: iucn[a.iucn].c }} title={iucn[a.iucn][lang]}>{a.iucn}</span>}
             </div>
             <div className="card-body">

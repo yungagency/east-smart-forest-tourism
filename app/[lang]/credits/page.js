@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { getDict } from '@/lib/i18n';
 import { getSites, t } from '@/lib/data';
@@ -6,7 +7,8 @@ export const revalidate = 60;
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  return { title: getDict(lang).credits.title, robots: { index: false } };
+  const d = getDict(lang);
+  return pageMeta({ lang, path: '/credits', title: lang === 'en' ? 'Photo and data credits' : 'Crédits photos et données', description: d.landing.text, noindex: true });
 }
 
 export default async function Credits({ params }) {
@@ -25,7 +27,7 @@ export default async function Credits({ params }) {
             {items.map((it, i) => (
               <li key={i}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={it.image_url} alt="" loading="lazy" referrerPolicy="no-referrer" />
+                <img src={it.image_url} alt={it.name_fr || ''} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                 <div>
                   <b>{it.slug ? <Link href={`/${lang}/sites/${it.slug}`}>{it.name}</Link> : it.name}</b>
                   <div className="small muted">

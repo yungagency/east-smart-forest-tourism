@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import { getDict } from '@/lib/i18n';
 import { getSites, t } from '@/lib/data';
 import { SITE_GALLERY, faunaForSite, tf } from '@/lib/fauna';
@@ -11,7 +12,7 @@ const TOWNS = ['bertoua', 'forteresse-allemande-de-doume', 'lomie-ville-historiq
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   const d = getDict(lang);
-  return { title: d.tour3d.title, description: d.tour3d.intro };
+  return pageMeta({ lang, path: '/visite-3d', title: lang === 'en' ? 'East Cameroon in 3D from satellite' : "L'Est du Cameroun en 3D par satellite", description: d.tour3d.intro });
 }
 
 export default async function Visite3D({ params, searchParams }) {

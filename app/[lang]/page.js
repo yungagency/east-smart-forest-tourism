@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { pageMeta, JsonLd, SITE_URL } from '@/lib/seo';
 import { getDict } from '@/lib/i18n';
 import { getSites, t } from '@/lib/data';
 import { WHY_IMAGE, PILLARS_IMAGE } from '@/lib/seed';
@@ -6,9 +7,18 @@ import { SITE } from '@/lib/site-config';
 import SiteCard from '@/components/SiteCard';
 import MapView from '@/components/MapView';
 import Icon from '@/components/Icons';
+import { srcSet, CARD_SIZES } from '@/lib/img';
 import { FAUNA, SITE_GALLERY } from '@/lib/fauna';
 
 export const revalidate = 60;
+
+export async function generateMetadata({ params }) {
+  const { lang } = await params;
+  const d = getDict(lang);
+  const m = pageMeta({ lang, path: '', title: '', description: d.landing.text, image: '/images/hero-east-960.jpg' });
+  const title = lang === 'en' ? 'East Cameroon tourism: parks, wildlife & forests | EAST Smart' : "Tourisme dans l'Est du Cameroun : parcs, faune, forêts | EAST Smart";
+  return { ...m, title: { absolute: title }, openGraph: { ...m.openGraph, title }, twitter: { ...m.twitter, title } };
+}
 
 const PILLAR_ICONS = ['tree', 'elephant', 'cap', 'megaphone', 'pin'];
 
@@ -29,10 +39,10 @@ export default async function Home({ params }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="hero-photo"
-          src="/images/hero-east.jpg"
-          srcSet="/images/hero-east-960.jpg 960w, /images/hero-east.jpg 1672w"
+          src="/images/hero-east.webp"
+          srcSet="/images/hero-east-960.webp 960w, /images/hero-east.webp 1672w"
           sizes="100vw"
-          alt=""
+          alt={lang === 'en' ? 'Forest elephant in East Cameroon (illustration)' : "Éléphant de forêt dans l'Est du Cameroun (illustration)"}
           fetchPriority="high"
         />
         <span className="hero-tag">{d.illustration}</span>
@@ -126,7 +136,7 @@ export default async function Home({ params }) {
           ].map((m) => (
             <Link key={m.href} href={m.href} className="mod-card">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              {m.img && <img src={m.img} alt="" loading="lazy" referrerPolicy="no-referrer" />}
+              {m.img && <img src={m.img} srcSet={srcSet(m.img)} sizes={CARD_SIZES} alt={m.k.bandTitle} loading="lazy" decoding="async" referrerPolicy="no-referrer" />}
               <div>
                 <h3>{m.k.bandTitle}</h3>
                 <p>{m.k.bandText}</p>
@@ -168,7 +178,7 @@ export default async function Home({ params }) {
         <div className="wrap why-grid">
           <div className="why-photo">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={WHY_IMAGE.image_url} alt="" loading="lazy" referrerPolicy="no-referrer" />
+            <img src={WHY_IMAGE.image_url} alt={lang === 'en' ? 'Upper Sanaga river, Mbam and Djerem National Park' : 'La Haute Sanaga, parc national du Mbam et Djerem'} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
             <div className="why-caption">
               <span className="round-ic sm"><Icon name="drone" size={20} /></span>
               <span>{L.whyCaption}</span>

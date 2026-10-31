@@ -289,7 +289,7 @@ export default function Explorer3D({ sites, lang, t3, initialSite, labels }) {
           <div className="lightbox" role="dialog" aria-modal="true" onClick={() => setLb(-1)}>
             <div className="lb-inner" onClick={(e) => e.stopPropagation()}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={current.photos[lb].src} alt="" referrerPolicy="no-referrer" />
+              <img src={current.photos[lb].src} alt={current.photos[lb].caption || name(current)} referrerPolicy="no-referrer" />
               <div className="lb-bar">
                 <span><b>{current.photos[lb].caption}</b><small>© {current.photos[lb].credit}</small></span>
                 <span className="lb-nav">

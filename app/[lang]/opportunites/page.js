@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { getDict } from '@/lib/i18n';
 import { getOpportunities, getSites, t } from '@/lib/data';
@@ -21,7 +22,8 @@ export const revalidate = 60;
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  return { title: getDict(lang).opps.title };
+  const d = getDict(lang);
+  return pageMeta({ lang, path: '/opportunites', title: lang === 'en' ? 'Invest in East Cameroon tourism' : "Investir dans le tourisme de l'Est", description: d.partner.text });
 }
 
 export default async function OppsPage({ params }) {

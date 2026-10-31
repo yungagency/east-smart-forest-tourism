@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getDict } from '@/lib/i18n';
@@ -7,6 +8,10 @@ import Placeholder from '@/components/Placeholder';
 import MapView from '@/components/MapView';
 import SiteCard from '@/components/SiteCard';
 import Gallery from '@/components/Gallery';
+import { srcSet } from '@/lib/img';
+import FavButton from '@/components/FavButton';
+import ShareBar from '@/components/ShareBar';
+import { JsonLd, breadcrumb, abs } from '@/lib/seo';
 import { faunaForSite, SITE_GALLERY, IUCN, tf } from '@/lib/fauna';
 import { nearby } from '@/lib/places';
 
@@ -21,7 +26,11 @@ export async function generateMetadata({ params }) {
   const { lang, slug } = await params;
   const s = await getSite(slug);
   if (!s) return {};
-  return { title: t(s, 'name', lang), description: t(s, 'summary', lang) };
+  const name = t(s, 'name', lang);
+  const park = s.category === 'parc';
+  const suffix = lang === 'en' ? (park ? ': visit & wildlife' : ': visitor guide') : (park ? ' : visite et faune' : ' : visite et accès');
+  const title = (name + suffix).length <= 40 ? name + suffix : name;
+  return pageMeta({ lang, path: `/sites/${slug}`, title, description: t(s, 'summary', lang), image: s.image_url, imageAlt: name, type: 'article' });
 }
 
 export default async function SitePage({ params }) {
@@ -37,8 +46,27 @@ export default async function SitePage({ params }) {
   const fauna = faunaForSite(s.slug);
   const near = hasCoords ? nearby(s, ['lodging', 'food'], 45).slice(0, 6) : [];
 
+  const name = t(s, 'name', lang);
+  const ld = [
+    {
+      '@context': 'https://schema.org',
+      '@type': s.category === 'parc' ? ['TouristAttraction', 'Park'] : 'TouristAttraction',
+      name, description: t(s, 'summary', lang), url: abs(`/${lang}/sites/${s.slug}`),
+      ...(s.image_url ? { image: abs(s.image_url) } : {}),
+      ...(hasCoords ? { geo: { '@type': 'GeoCoordinates', latitude: s.lat, longitude: s.lng } } : {}),
+      address: { '@type': 'PostalAddress', addressLocality: s.commune || undefined, addressRegion: lang === 'en' ? 'East Region' : 'Région de l’Est', addressCountry: 'CM' },
+      touristType: s.category === 'parc' ? ['Ecotourism', 'Wildlife watching'] : ['Cultural tourism'],
+    },
+    breadcrumb([
+      { name: lang === 'en' ? 'Home' : 'Accueil', url: `/${lang}` },
+      { name: d.sites.title, url: `/${lang}/sites` },
+      { name, url: `/${lang}/sites/${s.slug}` },
+    ]),
+  ];
+
   return (
     <>
+      <JsonLd data={ld} />
       <section className="page-head">
         <div className="wrap">
           <Link href={`/${lang}/sites`} className="crumb">← {d.sites.back}</Link>
@@ -47,6 +75,10 @@ export default async function SitePage({ params }) {
           </div>
           <h1>{t(s, 'name', lang)}</h1>
           <p className="lead">{t(s, 'summary', lang)}</p>
+          <div className="head-actions">
+            <FavButton lang={lang} light item={{ id: `site:${s.slug}`, type: 'site', name, href: `/${lang}/sites/${s.slug}`, image: s.image_url }} />
+            <ShareBar lang={lang} url={`/${lang}/sites/${s.slug}`} title={name} />
+          </div>
         </div>
       </section>
 
@@ -56,7 +88,7 @@ export default async function SitePage({ params }) {
             <div className="hero-img">
               {s.image_url
                 // eslint-disable-next-line @next/next/no-img-element
-                ? <img src={s.image_url} alt={t(s, 'name', lang)} referrerPolicy="no-referrer" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                ? <img src={s.image_url} alt={t(s, 'name', lang)} fetchPriority="high" referrerPolicy="no-referrer" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 : <Placeholder category={s.category} />}
             </div>
             {s.image_url && s.image_credit && (
@@ -82,7 +114,7 @@ export default async function SitePage({ params }) {
                     <Link key={a.slug} href={`/${lang}/faune/${a.slug}`} className="card animal-card">
                       <div className="card-img">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={a.photos[0]?.src} alt={tf(a, 'name', lang)} loading="lazy" referrerPolicy="no-referrer" />
+                        <img src={a.photos[0]?.src} srcSet={srcSet(a.photos[0]?.src)} sizes="200px" alt={tf(a, 'name', lang)} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                         {a.iucn && <span className="iucn-badge" style={{ background: IUCN[a.iucn].c }}>{a.iucn}</span>}
                       </div>
                       <div className="card-body" style={{ padding: 12 }}>

@@ -1,5 +1,6 @@
 'use client';
 import { useMemo, useState } from 'react';
+import FavButton from './FavButton';
 
 const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
@@ -44,6 +45,7 @@ export default function ServicesDirectory({ items, lang, t, layers }) {
                 <b>{i.name}</b>
                 <small>{i.town || '—'}</small>
                 {i.phone && <small><a href={`tel:${i.phone.replace(/\s/g, '')}`} style={{ color: 'var(--g600)' }}>{i.phone}</a></small>}
+                <FavButton lang={lang} item={{ id: `place:${i.id}`, type: 'place', name: `${i.name}${i.town ? ` (${i.town})` : ''}`, href: `/${lang}/carte?lieu=${i.id}` }} />
                 <div className="tm-actions">
                   <a className="btn btn-green" href={`/${lang}/services/reserver?ref=${encodeURIComponent(i.id)}`}>{t.book}</a>
                   <a className="btn btn-outline" href={`/${lang}/carte?lieu=${encodeURIComponent(i.id)}`}>{t.onMap}</a>

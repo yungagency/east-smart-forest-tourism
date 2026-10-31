@@ -1,10 +1,12 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { getDict } from '@/lib/i18n';
 import { SITE } from '@/lib/site-config';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  return { title: getDict(lang).legalLink, robots: { index: false } };
+  const d = getDict(lang);
+  return pageMeta({ lang, path: '/mentions-legales', title: lang === 'en' ? 'Legal notice' : 'Mentions légales', description: d.landing.text, noindex: true });
 }
 
 const CONTENT = {

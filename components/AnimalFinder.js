@@ -21,7 +21,7 @@ export default function AnimalFinder({ animals, sites, lang, t, t3 }) {
         <div className="finder-result">
           <div className="finder-head">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={a.photos[0]?.src} alt="" referrerPolicy="no-referrer" />
+            <img src={a.photos[0]?.src} alt={name(a)} loading="lazy" referrerPolicy="no-referrer" />
             <div><b>{name(a)}</b><em className="sci">{a.sci}</em><Link href={`/${lang}/faune/${a.slug}`}>{t.presentation} →</Link></div>
           </div>
           <ul>

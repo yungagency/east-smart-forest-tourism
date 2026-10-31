@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { getDict } from '@/lib/i18n';
 import { getSites, t } from '@/lib/data';
@@ -8,7 +9,7 @@ const PLANNED = ['parc-national-de-lobeke', 'reserve-de-faune-du-dja', 'forteres
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   const d = getDict(lang);
-  return { title: d.pano.title, description: d.pano.intro };
+  return pageMeta({ lang, path: '/visite-360', title: lang === 'en' ? '360° virtual tours' : 'Visites virtuelles à 360°', description: d.pano.intro });
 }
 
 export default async function Visite360({ params }) {
@@ -49,7 +50,7 @@ export default async function Visite360({ params }) {
             {planned.map((s) => (
               <Link key={s.slug} href={`/${lang}/sites/${s.slug}`}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                {s.image_url && <img src={s.image_url} alt="" loading="lazy" referrerPolicy="no-referrer" />}
+                {s.image_url && <img src={s.image_url} alt={t(s, 'name', lang)} loading="lazy" decoding="async" referrerPolicy="no-referrer" />}
                 <em>{p.status}</em>
                 <span>{t(s, 'name', lang)}</span>
               </Link>

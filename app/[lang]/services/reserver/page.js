@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { getDict } from '@/lib/i18n';
 import { POIS } from '@/lib/places';
@@ -6,7 +7,8 @@ import RequestForm from '@/components/RequestForm';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  return { title: getDict(lang).services.bookTitle, robots: { index: false } };
+  const d = getDict(lang);
+  return pageMeta({ lang, path: '/services/reserver', title: lang === 'en' ? 'Booking request' : 'Demande de réservation', description: d.services.bookIntro, noindex: true });
 }
 
 export default async function Reserver({ params, searchParams }) {

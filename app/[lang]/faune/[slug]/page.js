@@ -1,9 +1,14 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getDict } from '@/lib/i18n';
 import { getSites } from '@/lib/data';
 import { FAUNA, IUCN, GROUPS, getAnimal, tf } from '@/lib/fauna';
 import Gallery from '@/components/Gallery';
+import { srcSet } from '@/lib/img';
+import FavButton from '@/components/FavButton';
+import ShareBar from '@/components/ShareBar';
+import { JsonLd, breadcrumb, abs } from '@/lib/seo';
 import Icon from '@/components/Icons';
 
 export const revalidate = 60;
@@ -17,11 +22,9 @@ export async function generateMetadata({ params }) {
   const { lang, slug } = await params;
   const a = getAnimal(slug);
   if (!a) return {};
-  return {
-    title: `${tf(a, 'name', lang)} (${a.sci})`,
-    description: tf(a, 'summary', lang),
-    openGraph: { images: a.photos[0] ? [{ url: a.photos[0].src }] : [] },
-  };
+  const name = tf(a, 'name', lang);
+  const long = lang === 'en' ? `${name} in East Cameroon` : `${name} (${a.sci})`;
+  return pageMeta({ lang, path: `/faune/${slug}`, title: long.length <= 40 ? long : name, description: tf(a, 'summary', lang), image: a.photos[0]?.src, imageAlt: name, type: 'article' });
 }
 
 export default async function AnimalPage({ params }) {
@@ -38,11 +41,26 @@ export default async function AnimalPage({ params }) {
     : FAUNA.filter((x) => x.slug !== a.slug && x.group === a.group)).slice(0, 5);
   const first3d = where.find((s) => typeof s.lat === 'number');
 
+  const name = tf(a, 'name', lang);
+  const ld = [
+    {
+      '@context': 'https://schema.org', '@type': 'Taxon', name: a.sci, alternateName: [a.name_fr, a.name_en],
+      taxonRank: 'species', url: abs(`/${lang}/faune/${a.slug}`), image: a.photos[0] ? abs(a.photos[0].src) : undefined,
+      description: tf(a, 'summary', lang), sameAs: a.sources.filter((u) => u.includes('wikipedia.org')),
+    },
+    breadcrumb([
+      { name: lang === 'en' ? 'Home' : 'Accueil', url: `/${lang}` },
+      { name: t.title, url: `/${lang}/faune` },
+      { name, url: `/${lang}/faune/${a.slug}` },
+    ]),
+  ];
+
   return (
     <>
+      <JsonLd data={ld} />
       <section className="animal-hero">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img className="animal-hero-img" src={a.photos[0].src} alt="" referrerPolicy="no-referrer" />
+        <img className="animal-hero-img" src={a.photos[0].src} alt={tf(a, 'name', lang)} fetchPriority="high" referrerPolicy="no-referrer" />
         <div className="animal-hero-shade" />
         <div className="wrap animal-hero-in">
           <Link href={`/${lang}/faune`} className="crumb">← {t.back}</Link>
@@ -54,6 +72,10 @@ export default async function AnimalPage({ params }) {
               <span className="badge" style={{ background: status.c, color: '#fff' }}>{t.status} : {status[lang]} ({a.iucn})</span>
             </div>
           )}
+          <div className="head-actions">
+            <FavButton lang={lang} light item={{ id: `animal:${a.slug}`, type: 'animal', name, href: `/${lang}/faune/${a.slug}`, image: a.photos[0]?.src }} />
+            <ShareBar lang={lang} url={`/${lang}/faune/${a.slug}`} title={name} />
+          </div>
         </div>
       </section>
 
@@ -136,7 +158,7 @@ export default async function AnimalPage({ params }) {
               {others.map((o) => (
                 <Link key={o.slug} href={`/${lang}/faune/${o.slug}`} className="mini-item">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={o.photos[0].src} alt="" loading="lazy" referrerPolicy="no-referrer" />
+                  <img src={o.photos[0].src} srcSet={srcSet(o.photos[0].src)} sizes="56px" alt={tf(o, 'name', lang)} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
                   <span><b>{tf(o, 'name', lang)}</b><em className="sci">{o.sci}</em></span>
                 </Link>
               ))}

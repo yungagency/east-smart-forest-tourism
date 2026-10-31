@@ -1,10 +1,12 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { getDict } from '@/lib/i18n';
 import RequestForm from '@/components/RequestForm';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  return { title: getDict(lang).services.registerTitle };
+  const d = getDict(lang);
+  return pageMeta({ lang, path: '/services/inscription', title: lang === 'en' ? 'List your hotel or business' : 'Inscrire son hôtel ou son activité', description: d.services.registerIntro });
 }
 
 export default async function Inscription({ params }) {

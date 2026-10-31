@@ -13,7 +13,8 @@
     "react-dom": "^19.2.0",
     "@supabase/supabase-js": "2.57.4",
     "leaflet": "1.9.4",
-    "maplibre-gl": "^4.7.1"
+    "maplibre-gl": "^4.7.1",
+    "@vercel/analytics": "^1.5.0"
   },
   "engines": {
     "node": ">=20"

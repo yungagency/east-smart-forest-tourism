@@ -1,9 +1,11 @@
+import { pageMeta } from '@/lib/seo';
 import Link from 'next/link';
 import { getDict } from '@/lib/i18n';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  return { title: getDict(lang).about.title };
+  const d = getDict(lang);
+  return pageMeta({ lang, path: '/a-propos', title: lang === 'en' ? 'The project: forests and tourism in the East' : "Le projet : forêts et tourisme de l'Est", description: d.landing.text });
 }
 
 export default async function About({ params }) {

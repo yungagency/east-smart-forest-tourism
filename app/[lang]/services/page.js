@@ -1,3 +1,4 @@
+import { pageMeta } from '@/lib/seo';
 import { getDict } from '@/lib/i18n';
 import { POIS, LAYERS } from '@/lib/places';
 import ServicesDirectory from '@/components/ServicesDirectory';
@@ -5,7 +6,7 @@ import ServicesDirectory from '@/components/ServicesDirectory';
 export async function generateMetadata({ params }) {
   const { lang } = await params;
   const d = getDict(lang);
-  return { title: d.services.title, description: d.services.intro };
+  return pageMeta({ lang, path: '/services', title: lang === 'en' ? 'Hotels, restaurants and guides in the East' : "Hôtels, restaurants et guides dans l'Est", description: d.services.intro });
 }
 
 export default async function ServicesPage({ params }) {

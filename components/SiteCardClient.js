@@ -1,3 +1,4 @@
+import { srcSet, CARD_SIZES } from '@/lib/img';
 import Link from 'next/link';
 import Placeholder from './Placeholder';
 
@@ -10,7 +11,7 @@ export default function SiteCard({ site, lang, d }) {
         {site.image_url ? (
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={site.image_url} alt={t(site, 'name', lang)} loading="lazy" referrerPolicy="no-referrer" />
+            <img src={site.image_url} srcSet={srcSet(site.image_url)} sizes={CARD_SIZES} alt={t(site, 'name', lang)} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
             <span className="credit-dot">©</span>
           </>
         ) : (

@@ -3,6 +3,7 @@ import { LogoMark, Wordmark } from './Logo';
 import Icon from './Icons';
 import { SITE } from '@/lib/site-config';
 import { hasSupabase } from '@/lib/supabase';
+import Newsletter from './Newsletter';
 
 export default function Footer({ lang, d }) {
   const L = d.landing;
@@ -25,7 +26,7 @@ export default function Footer({ lang, d }) {
       {/* Colonnes */}
       <div className="wrap footer-cols">
         <div className="footer-about">
-          <Link href={`/${lang}`} className="footer-brand" aria-label="EAST Smart Forest & Tourism">
+          <Link href={`/${lang}`} className="footer-brand">
             <LogoMark className="brand-mark lg" />
             <Wordmark size={0.9} />
           </Link>
@@ -44,6 +45,8 @@ export default function Footer({ lang, d }) {
           <Link href={`/${lang}/sites`}>{d.nav.sites}</Link>
           <Link href={`/${lang}/carte`}>{d.nav.map}</Link>
           <Link href={`/${lang}/faune`}>{d.nav.fauna}</Link>
+          <Link href={`/${lang}/faune/quiz`}>{lang === 'en' ? 'Wildlife quiz' : 'Quiz faune'}</Link>
+          <Link href={`/${lang}/mon-voyage`}>{lang === 'en' ? 'My trip' : 'Mon voyage'}</Link>
           <Link href={`/${lang}/contact`}>{d.nav.contact}</Link>
         </nav>
 
@@ -64,6 +67,7 @@ export default function Footer({ lang, d }) {
           <a href={`tel:${SITE.phoneHref}`} className="footer-line"><Icon name="phone" size={16} /> {SITE.phone}</a>
           <span className="footer-line"><Icon name="pin" size={16} /> {L.location}</span>
           <a href={`https://wa.me/${SITE.whatsapp}`} target="_blank" rel="noopener noreferrer" className="btn btn-primary footer-wa">{F.whatsapp}</a>
+          <Newsletter lang={lang} />
         </div>
       </div>
 

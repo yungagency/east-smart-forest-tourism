@@ -1,10 +1,12 @@
+import { pageMeta } from '@/lib/seo';
 import { getDict } from '@/lib/i18n';
 import { SITE } from '@/lib/site-config';
 import ContactForm from '@/components/ContactForm';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  return { title: getDict(lang).contact.title };
+  const d = getDict(lang);
+  return pageMeta({ lang, path: '/contact', title: lang === 'en' ? 'Contact and partnerships' : 'Contact et partenariats', description: d.contact.intro || d.landing.text });
 }
 
 export default async function Contact({ params, searchParams }) {

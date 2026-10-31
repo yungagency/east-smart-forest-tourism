@@ -32,7 +32,7 @@ export default function Header({ lang, nav, partner }) {
   return (
     <header className={`header ${isHome ? 'header-fixed' : ''} ${isHome && !scrolled ? 'is-top' : ''}`}>
       <div className="wrap header-in">
-        <Link href={`/${lang}`} className="brand" onClick={() => setOpen(false)} aria-label="EAST Smart Forest & Tourism">
+        <Link href={`/${lang}`} className="brand" onClick={() => setOpen(false)} title="EAST Smart Forest & Tourism">
           <LogoMark />
           <Wordmark dark size={0.92} />
         </Link>

@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
+import FavButton from './FavButton';
 
 const ICONS = {
   tree: '<path d="M12 22v-7"/><path d="M8 15h8a4 4 0 0 0 1-7.9A5 5 0 0 0 7.2 6 4.5 4.5 0 0 0 8 15Z"/>',
@@ -200,7 +201,7 @@ export default function TourMap({ items, layers, circuits, outline, lang, t, ini
             <button className="tm-close" onClick={() => setSel(null)} aria-label="✕">✕</button>
             {sel.image && (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={sel.image} alt="" referrerPolicy="no-referrer" />
+              <img src={sel.image} alt={sel.name} referrerPolicy="no-referrer" />
             )}
             <div className="tm-card-body">
               <span className="tm-tag" style={{ background: layers[sel.layer].c }}>{layers[sel.layer][lang] || layers[sel.layer].fr}</span>
@@ -209,6 +210,9 @@ export default function TourMap({ items, layers, circuits, outline, lang, t, ini
               {sel.summary && <p>{sel.summary}</p>}
               {sel.phone && <p className="small">{t.phone} : <a href={`tel:${sel.phone.replace(/\s/g, '')}`}>{sel.phone}</a></p>}
               {sel.src === 'osm' && <p className="small muted">© OpenStreetMap</p>}
+              <FavButton lang={lang} item={sel.kind === 'site'
+                ? { id: `site:${sel.slug}`, type: 'site', name: sel.name, href: `/${lang}/sites/${sel.slug}`, image: sel.image }
+                : { id: `place:${sel.id}`, type: 'place', name: sel.name + (sel.town ? ` (${sel.town})` : ''), href: `/${lang}/carte?lieu=${sel.id}`, image: sel.image }} />
               <div className="tm-actions">
                 {sel.href && <a className="btn btn-green" href={sel.href}>{t.openSheet}</a>}
                 {sel.site && !sel.href && <a className="btn btn-green" href={`/${lang}/sites/${sel.site}`}>{t.openSheet}</a>}
