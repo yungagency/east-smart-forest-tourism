@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
   const { lang } = await params;
   const d = getDict(lang);
   const m = pageMeta({ lang, path: '', title: '', description: d.landing.text, image: '/images/hero-east-960.jpg' });
-  const title = lang === 'en' ? 'East Cameroon tourism: parks, wildlife & forests | EAST Smart' : "Tourisme dans l'Est du Cameroun : parcs, faune, forêts | EAST Smart";
+  const title = lang === 'en' ? 'East Cameroon tourism: parks & wildlife | EAST Smart' : 'Tourisme Est Cameroun : parcs, faune, forêts | EAST Smart';
   return { ...m, title: { absolute: title }, openGraph: { ...m.openGraph, title }, twitter: { ...m.twitter, title } };
 }
 

@@ -16,7 +16,7 @@ export function abs(u) {
 }
 
 // Métadonnées complètes d'une page (titre, description, langues, partage)
-export function pageMeta({ lang, path = '', title, description, image, imageAlt, type = 'website', noindex = false }) {
+export function pageMeta({ lang, path = '', title, description, image = '/images/hero-east-960.jpg', imageAlt, type = 'website', noindex = false }) {
   // WhatsApp/Facebook lisent mal le WebP : version JPG pour le partage
   const shareImg = image && image.startsWith('/images/') ? image.replace(/\.webp$/, '.jpg') : image;
   const img = shareImg ? [{ url: abs(shareImg), alt: imageAlt || title }] : undefined;
