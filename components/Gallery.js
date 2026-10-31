@@ -29,7 +29,7 @@ export default function Gallery({ photos = [], lang = 'fr', labels, compact = fa
         {photos.map((p, i) => (
           <button key={p.src} className="gal-item" onClick={() => setOpen(i)} aria-label={cap(p)}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={p.src} srcSet={srcSet(p.src)} sizes="(max-width: 640px) 50vw, 400px" alt={cap(p)} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
+            <img src={p.src} srcSet={srcSet(p.src)} sizes="(max-width: 640px) 50vw, 400px" alt="" loading="lazy" decoding="async" referrerPolicy="no-referrer" />
             {!compact && <span className="gal-cap">{cap(p)}</span>}
           </button>
         ))}

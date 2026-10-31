@@ -645,3 +645,6 @@ article p a, .lead a, .note a, .where-item a:not(.btn), .finder-head a, .tm-circ
 .nl input::placeholder { color: rgba(255,255,255,.6); }
 .nl .btn { padding: 10px 14px; }
 .nl-ok { margin-top: 14px; color: var(--lime); font-weight: 600; }
+
+.footer-bottom a { text-decoration: underline; text-underline-offset: 2px; }
+.sources li { padding: 4px 0; }
