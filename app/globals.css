@@ -672,3 +672,12 @@ article p a, .lead a, .note a, .where-item a:not(.btn), .finder-head a, .tm-circ
 .guide-teaser dt::after { content: ' :'; }
 .guide-teaser dd { margin: 0; }
 @media (max-width: 900px) { .guide-layout { grid-template-columns: 1fr; } }
+
+/* Dossier investisseurs */
+.dossier-box { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; align-items: center; background: var(--g900); color: #fff; border-radius: 18px; padding: 28px; }
+.dossier-box h2 { color: #fff; margin: 0 0 8px; }
+.dossier-box p { color: #dcebd7; margin: 0; }
+.dossier-form { display: grid; gap: 10px; }
+.dossier-form input { padding: 12px 14px; border-radius: 10px; border: 1px solid #2f5e43; background: #fff; color: #13241a; font: inherit; }
+.dossier-form small { color: #b9d1b4; }
+@media (max-width: 760px) { .dossier-box { grid-template-columns: 1fr; padding: 20px; } }

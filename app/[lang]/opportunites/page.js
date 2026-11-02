@@ -4,6 +4,7 @@ import { getDict } from '@/lib/i18n';
 import { getOpportunities, getSites, t } from '@/lib/data';
 import Icon from '@/components/Icons';
 import RequestForm from '@/components/RequestForm';
+import DossierDownload from '@/components/DossierDownload';
 import { POIS, km } from '@/lib/places';
 
 // Portes d'entrée des grands sites et offre d'hébergement référencée (OpenStreetMap, rayon 30 km)
@@ -47,6 +48,9 @@ export default async function OppsPage({ params }) {
             <Icon name="handshake" size={20} /> {d.landing.partner}
           </Link>
         </div>
+      </section>
+      <section className="section" style={{ paddingBottom: 0 }}>
+        <div className="wrap"><DossierDownload lang={lang} /></div>
       </section>
       <section className="section">
         <div className="wrap">
