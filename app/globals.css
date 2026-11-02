@@ -648,3 +648,27 @@ article p a, .lead a, .note a, .where-item a:not(.btn), .finder-head a, .tm-circ
 
 .footer-bottom a { text-decoration: underline; text-underline-offset: 2px; }
 .sources li { padding: 4px 0; }
+
+/* ===== Guides pratiques ===== */
+.guide-head { background: linear-gradient(0deg, rgba(6,32,19,.9), rgba(6,32,19,.6)), var(--bg, none) center / cover, var(--g800); }
+.guide-layout { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
+.guide-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; margin: 0 0 18px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.guide-facts > div { padding: 14px 16px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); }
+.guide-facts dt { font-size: .7rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+.guide-facts dd { margin: 4px 0 0; font-weight: 600; font-size: .93rem; }
+.guide-sec { margin-top: 30px; }
+.guide-sec h2 { font-size: 1.4rem; }
+.guide-src { font-size: .78rem; color: var(--muted); }
+.guide-src a { color: var(--g600); }
+.faq { display: grid; gap: 8px; margin-bottom: 24px; }
+.faq details { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.faq summary { cursor: pointer; font-weight: 600; color: var(--g900); }
+.faq details p { margin: 10px 0 0; }
+.guide-teaser { display: flex; gap: 18px; align-items: center; justify-content: space-between; flex-wrap: wrap; background: var(--mint); border: 1px solid var(--mint-2); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 24px; }
+.guide-teaser h2 { margin: 2px 0 8px; font-size: 1.25rem; }
+.guide-teaser dl { display: grid; gap: 4px; margin: 0; font-size: .88rem; }
+.guide-teaser dl div { display: flex; gap: 6px; flex-wrap: wrap; }
+.guide-teaser dt { font-weight: 700; }
+.guide-teaser dt::after { content: ' :'; }
+.guide-teaser dd { margin: 0; }
+@media (max-width: 900px) { .guide-layout { grid-template-columns: 1fr; } }

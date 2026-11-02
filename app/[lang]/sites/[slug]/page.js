@@ -9,6 +9,7 @@ import MapView from '@/components/MapView';
 import SiteCard from '@/components/SiteCard';
 import Gallery from '@/components/Gallery';
 import { srcSet } from '@/lib/img';
+import { getGuide } from '@/lib/guides';
 import FavButton from '@/components/FavButton';
 import ShareBar from '@/components/ShareBar';
 import { JsonLd, breadcrumb, abs } from '@/lib/seo';
@@ -43,6 +44,7 @@ export default async function SitePage({ params }) {
   const hasCoords = typeof s.lat === 'number' && typeof s.lng === 'number';
   const sources = Array.isArray(s.sources) ? s.sources : [];
   const gallery = SITE_GALLERY[s.slug] || [];
+  const guide = getGuide(s.slug);
   const fauna = faunaForSite(s.slug);
   const near = hasCoords ? nearby(s, ['lodging', 'food'], 45).slice(0, 6) : [];
 
@@ -95,6 +97,18 @@ export default async function SitePage({ params }) {
               <p className="photo-credit">
                 {s.image_source ? <a href={s.image_source} target="_blank" rel="noopener noreferrer">{s.image_credit}</a> : s.image_credit}
               </p>
+            )}
+            {guide && (
+              <div className="guide-teaser">
+                <div>
+                  <span className="eyebrow">{lang === 'en' ? 'Practical guide' : 'Guide pratique'}</span>
+                  <h2>{lang === 'en' ? 'Plan your visit' : 'Préparer votre visite'}</h2>
+                  <dl>
+                    {guide.facts.slice(2, 5).map((x) => <div key={x.fr}><dt>{x[lang] || x.fr}</dt><dd>{x[`v_${lang}`] || x.v_fr}</dd></div>)}
+                  </dl>
+                </div>
+                <Link className="btn btn-green" href={`/${lang}/guides/${s.slug}`}>{lang === 'en' ? 'Read the full guide' : 'Lire le guide complet'} →</Link>
+              </div>
             )}
             {gallery.length > 0 && (
               <div style={{ marginBottom: 24 }}>

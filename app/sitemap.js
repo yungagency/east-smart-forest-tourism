@@ -1,6 +1,7 @@
 import { SEED_SITES } from '@/lib/seed';
 import { FAUNA } from '@/lib/fauna';
 import { SITE_URL } from '@/lib/seo';
+import { GUIDES } from '@/lib/guides';
 
 const PAGES = [
   ['', 1, 'weekly'], ['/sites', 0.9, 'weekly'], ['/carte', 0.8, 'monthly'], ['/faune', 0.9, 'weekly'], ['/faune/quiz', 0.5, 'monthly'],
@@ -13,6 +14,7 @@ export default function sitemap() {
   const all = [
     ...PAGES,
     ...SEED_SITES.map((s) => [`/sites/${s.slug}`, 0.8, 'monthly']),
+    ...GUIDES.map((g) => [`/guides/${g.slug}`, 0.9, 'monthly']),
     ...FAUNA.map((a) => [`/faune/${a.slug}`, a.short ? 0.5 : 0.7, 'monthly']),
   ];
   const out = [];
