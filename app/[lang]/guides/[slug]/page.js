@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getDict } from '@/lib/i18n';
 import { getSite, t } from '@/lib/data';
-import { GUIDES, GUIDE_SOURCES, getGuide } from '@/lib/guides';
+import { GUIDES, getGuide } from '@/lib/guides';
 import { pageMeta, JsonLd, breadcrumb, abs } from '@/lib/seo';
 import FavButton from '@/components/FavButton';
 import ShareBar from '@/components/ShareBar';
@@ -75,7 +75,6 @@ export default async function GuidePage({ params }) {
                 <h2>{f(sec, 'h', lang)}</h2>
                 {(sec[`p_${lang}`] || sec.p_fr).map((p, i) => <p key={i}>{p}</p>)}
                 {sec.link === 'services' && <p><Link href={`/${lang}/services`}>{en ? 'See accommodation in the directory' : 'Voir les hébergements dans l’annuaire'} →</Link></p>}
-                <p className="guide-src">{en ? 'Sources' : 'Sources'} : {sec.src.map((k, i) => <span key={k}>{i > 0 && ' · '}<a href={GUIDE_SOURCES[k].url} target="_blank" rel="noopener noreferrer">{GUIDE_SOURCES[k].label}</a></span>)}</p>
               </section>
             ))}
 
@@ -91,8 +90,8 @@ export default async function GuidePage({ params }) {
 
             <div className="note">
               {en
-                ? `Information compiled from the public sources listed on this page, updated ${date}. Fees, access and conditions can change: confirm them with the conservation service or your operator before you travel.`
-                : `Informations compilées à partir des sources publiques citées sur cette page, mises à jour le ${date}. Tarifs, accès et conditions peuvent évoluer : faites-les confirmer par le service de conservation ou votre voyagiste avant le départ.`}
+                ? `Updated ${date}. Fees, access and conditions can change: confirm them with the conservation service or your operator before you travel.`
+                : `Mis à jour le ${date}. Tarifs, accès et conditions peuvent évoluer : faites-les confirmer par le service de conservation ou votre voyagiste avant le départ.`}
             </div>
           </article>
 

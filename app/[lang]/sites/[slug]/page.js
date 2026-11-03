@@ -42,7 +42,6 @@ export default async function SitePage({ params }) {
   const all = await getSites();
   const related = all.filter((x) => x.slug !== s.slug && x.category === s.category).slice(0, 3);
   const hasCoords = typeof s.lat === 'number' && typeof s.lng === 'number';
-  const sources = Array.isArray(s.sources) ? s.sources : [];
   const gallery = SITE_GALLERY[s.slug] || [];
   const guide = getGuide(s.slug);
   const fauna = faunaForSite(s.slug);
@@ -93,11 +92,6 @@ export default async function SitePage({ params }) {
                 ? <img src={s.image_url} alt={t(s, 'name', lang)} fetchPriority="high" referrerPolicy="no-referrer" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 : <Placeholder category={s.category} />}
             </div>
-            {s.image_url && s.image_credit && (
-              <p className="photo-credit">
-                {s.image_source ? <a href={s.image_source} target="_blank" rel="noopener noreferrer">{s.image_credit}</a> : s.image_credit}
-              </p>
-            )}
             {guide && (
               <div className="guide-teaser">
                 <div>
@@ -150,14 +144,6 @@ export default async function SitePage({ params }) {
                 <Link className="btn btn-green" href={`/${lang}/visite-3d?site=${s.slug}`}>{d.map.view3d}</Link>
                 <Link className="btn btn-outline" href={`/${lang}/carte?lieu=site-${s.slug}`}>{d.services.onMap}</Link>
               </div>
-            )}
-            {sources.length > 0 && (
-              <>
-                <h3 style={{ marginTop: 28 }}>{d.sites.sources}</h3>
-                <ol className="sources">
-                  {sources.map((u) => <li key={u}><a href={u} target="_blank" rel="noopener noreferrer">{u.replace(/^https?:\/\//, '').slice(0, 90)}</a></li>)}
-                </ol>
-              </>
             )}
           </article>
           <aside className="aside">

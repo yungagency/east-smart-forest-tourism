@@ -145,11 +145,6 @@ export default async function AnimalPage({ params }) {
               )}
               <Link className="btn btn-outline" href={`/${lang}/visite-360`}>{t.explore360}</Link>
             </div>
-
-            <h3 style={{ marginTop: 28 }}>{t.sources}</h3>
-            <ol className="sources">
-              {a.sources.map((u) => <li key={u}><a href={u} target="_blank" rel="noopener noreferrer">{u.replace(/^https?:\/\//, '').slice(0, 80)}</a></li>)}
-            </ol>
           </article>
 
           <aside className="aside">

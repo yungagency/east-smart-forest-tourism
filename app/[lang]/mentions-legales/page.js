@@ -21,12 +21,12 @@ const CONTENT = {
       "Base de données et stockage des fichiers (une fois activés) : Supabase Inc. (supabase.com).",
     ]],
     ['Contenus', [
-      "Les fiches de destinations sont rédigées à partir de sources publiques, citées sur chaque fiche. Elles sont marquées « à vérifier » ou « à documenter » tant qu'elles n'ont pas été validées sur le terrain, et n'ont pas de valeur officielle.",
+      "Les fiches de destinations et les guides sont rédigés à partir de sources publiques, listées sur la page Crédits et sources. Ils n'ont pas de valeur officielle : tarifs, accès et conditions sont à confirmer auprès des services compétents.",
       "Les pistes d'investissement sont des pistes de réflexion et non des projets validés par une autorité.",
       "Les positions sur les cartes sont approximatives.",
     ]],
     ['Photos et cartes', [
-      "Photos sous licences libres (Wikimedia Commons) : auteur et licence indiqués sous chaque photo et sur la page Crédits photos. L'image d'accueil est une image d'illustration.",
+      "Photos : photos transmises au projet et photos sous licences libres (Wikimedia Commons). Auteurs et licences sont indiqués sur la page Crédits et sources.",
       'Cartes : © les contributeurs OpenStreetMap. Visite 3D : imagerie Sentinel-2 cloudless 2016 par EOX IT Services GmbH (contient des données Copernicus Sentinel modifiées), relief Terrain Tiles (Mapzen, AWS Open Data).',
     ]],
     ['Données personnelles', [
@@ -47,12 +47,12 @@ const CONTENT = {
       'Database and file storage (once enabled): Supabase Inc. (supabase.com).',
     ]],
     ['Content', [
-      'Destination pages are written from public sources, cited on each page. They are marked "to be verified" or "to be documented" until validated in the field, and have no official status.',
+      'Destination pages and guides are written from public sources, listed on the Credits and sources page. They have no official status: fees, access and conditions should be confirmed with the relevant services.',
       'Investment leads are ideas for discussion, not projects validated by any authority.',
       'Map positions are approximate.',
     ]],
     ['Photos and maps', [
-      'Freely licensed photos (Wikimedia Commons): author and licence shown under each photo and on the Photo credits page. The homepage image is illustrative.',
+      'Photos: photos provided to the project and freely licensed photos (Wikimedia Commons). Authors and licences are listed on the Credits and sources page.',
       'Maps: © OpenStreetMap contributors. 3D tour: Sentinel-2 cloudless 2016 imagery by EOX IT Services GmbH (contains modified Copernicus Sentinel data), Terrain Tiles elevation (Mapzen, AWS Open Data).',
     ]],
     ['Personal data', [

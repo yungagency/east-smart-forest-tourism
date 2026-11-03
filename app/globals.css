@@ -681,3 +681,11 @@ article p a, .lead a, .note a, .where-item a:not(.btn), .finder-head a, .tm-circ
 .dossier-form input { padding: 12px 14px; border-radius: 10px; border: 1px solid #2f5e43; background: #fff; color: #13241a; font: inherit; }
 .dossier-form small { color: #b9d1b4; }
 @media (max-width: 760px) { .dossier-box { grid-template-columns: 1fr; padding: 20px; } }
+
+/* Crédits et sources */
+.credits h2 { margin: 28px 0 10px; }
+.credits details { border-bottom: 1px solid var(--line, #dfe6da); padding: 10px 0; }
+.credits summary { cursor: pointer; }
+.credits h3 { font-size: .95rem; margin: 10px 0 4px; }
+.credits ul { font-size: .85rem; padding-left: 18px; margin: 6px 0; word-break: break-word; }
+.credits a { color: var(--g600); }

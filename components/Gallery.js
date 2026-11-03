@@ -42,9 +42,6 @@ export default function Gallery({ photos = [], lang = 'fr', labels, compact = fa
             <div className="lb-bar">
               <span>
                 <b>{cap(cur)}</b>
-                <small>
-                  © {cur.page ? <a href={cur.page} target="_blank" rel="noopener noreferrer">{cur.credit}</a> : cur.credit} · {cur.license}
-                </small>
               </span>
               <span className="lb-nav">
                 {photos.length > 1 && <button onClick={() => move(-1)} aria-label={labels?.prev}>‹</button>}

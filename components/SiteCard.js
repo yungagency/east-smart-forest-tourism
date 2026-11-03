@@ -12,7 +12,6 @@ export default function SiteCard({ site, lang, d }) {
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={site.image_url} srcSet={srcSet(site.image_url)} sizes={CARD_SIZES} alt={t(site, 'name', lang)} loading="lazy" decoding="async" referrerPolicy="no-referrer" />
-            <span className="credit-dot">©</span>
           </>
         ) : (
           <Placeholder category={site.category} label={d.sites.cats[site.category]} />

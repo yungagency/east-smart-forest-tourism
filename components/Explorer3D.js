@@ -291,7 +291,7 @@ export default function Explorer3D({ sites, lang, t3, initialSite, labels }) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={current.photos[lb].src} alt={current.photos[lb].caption || name(current)} referrerPolicy="no-referrer" />
               <div className="lb-bar">
-                <span><b>{current.photos[lb].caption}</b><small>© {current.photos[lb].credit}</small></span>
+                <span><b>{current.photos[lb].caption}</b></span>
                 <span className="lb-nav">
                   <button onClick={() => setLb((lb - 1 + current.photos.length) % current.photos.length)}>‹</button>
                   <span>{lb + 1}/{current.photos.length}</span>

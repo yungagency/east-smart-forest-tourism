@@ -42,10 +42,9 @@ export default async function Home({ params }) {
           src="/images/hero-east.webp"
           srcSet="/images/hero-east-960.webp 960w, /images/hero-east.webp 1672w"
           sizes="100vw"
-          alt={lang === 'en' ? 'Forest elephant in East Cameroon (illustration)' : "Éléphant de forêt dans l'Est du Cameroun (illustration)"}
+          alt={lang === 'en' ? 'Forest elephant in East Cameroon' : "Éléphant de forêt dans l'Est du Cameroun"}
           fetchPriority="high"
         />
-        <span className="hero-tag">{d.illustration}</span>
         <div className="hero-shade" />
         <div className="wrap hero-in">
           <div className="hero-kicker">{L.kicker}</div>

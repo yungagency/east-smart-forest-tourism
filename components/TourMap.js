@@ -209,7 +209,6 @@ export default function TourMap({ items, layers, circuits, outline, lang, t, ini
               {sel.town && <small>{sel.town}</small>}
               {sel.summary && <p>{sel.summary}</p>}
               {sel.phone && <p className="small">{t.phone} : <a href={`tel:${sel.phone.replace(/\s/g, '')}`}>{sel.phone}</a></p>}
-              {sel.src === 'osm' && <p className="small muted">© OpenStreetMap</p>}
               <FavButton lang={lang} item={sel.kind === 'site'
                 ? { id: `site:${sel.slug}`, type: 'site', name: sel.name, href: `/${lang}/sites/${sel.slug}`, image: sel.image }
                 : { id: `place:${sel.id}`, type: 'place', name: sel.name + (sel.town ? ` (${sel.town})` : ''), href: `/${lang}/carte?lieu=${sel.id}`, image: sel.image }} />
